@@ -2,12 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import ts from 'typescript';
 
-//导出目录，相对nodejs项目工作目录
-const noutDir:string ='dist'
-
-//导出目录，绝对目录，默认不使用，覆盖相对目录设置
-const outDir:string=''
-
 
 
 
@@ -568,65 +562,7 @@ class TsToLuaConverter {
         this.luaCode += '    '.repeat(this.indentLevel) + text + '\n';
     }
 }
-// 主程序：读取当前目录下的 TS 文件并转换为 Lua
-function convertTsFilesToLua() {
-    const currentDir = process.cwd();
-    const srcDir = path.join(currentDir, 'src');
-    
-    // 确保 src 目录存在
-    if (!fs.existsSync(srcDir)) {
-        console.error('Error: src directory not found');
-        return;
-    }
-    
-    const files = fs.readdirSync(srcDir);
-    const tsFiles = files.filter(file => 
-        file.endsWith('.ts') && 
-        file !== 'converter.ts' && 
-        !file.endsWith('.d.ts')
-    );
-    
-    if (tsFiles.length === 0) {
-        console.log('No TypeScript files found in the src directory.');
-        return;
-    }
-    
-    console.log("开始编译......")
-    for (const tsFile of tsFiles) {
-        const filePath = path.join(srcDir, tsFile);
-        const sourceCode = fs.readFileSync(filePath, 'utf-8');
-        
-        // 创建 TypeScript 源文件
-        const sourceFile = ts.createSourceFile(
-            tsFile,
-            sourceCode,
-            ts.ScriptTarget.Latest,
-            true
-        );
-        
-        // 转换为 Lua
-        const converter = new TsToLuaConverter();
-        const luaCode = converter.convert(sourceFile);
-        
-        // 写入 Lua 文件到 dist 目录
-        let distDir = path.join(currentDir, noutDir);
-        if (outDir){
-            distDir=outDir
-        }
-        if (!fs.existsSync(distDir)) {
-            fs.mkdirSync(distDir);
-        }
-        
-        const luaFileName = tsFile.replace('.ts', '.lua');
-        const luaFilePath = path.join(distDir, luaFileName);
-        fs.writeFileSync(luaFilePath, luaCode);
-        
-        console.log(`Converted ${tsFile} to ${luaFileName}`);
 
-    }
 
-    console.log("编译结束。")
-}
 
-// 执行转换
-convertTsFilesToLua();
+export default TsToLuaConverter;

@@ -3,13 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs_1 = __importDefault(require("fs"));
-const path_1 = __importDefault(require("path"));
 const typescript_1 = __importDefault(require("typescript"));
-//导出目录，相对nodejs项目工作目录
-const noutDir = 'dist';
-//导出目录，绝对目录，默认不使用，覆盖相对目录设置
-const outDir = '';
 class TsToLuaConverter {
     constructor() {
         this.indentLevel = 0;
@@ -484,46 +478,4 @@ class TsToLuaConverter {
         this.luaCode += '    '.repeat(this.indentLevel) + text + '\n';
     }
 }
-// 主程序：读取当前目录下的 TS 文件并转换为 Lua
-function convertTsFilesToLua() {
-    const currentDir = process.cwd();
-    const srcDir = path_1.default.join(currentDir, 'src');
-    // 确保 src 目录存在
-    if (!fs_1.default.existsSync(srcDir)) {
-        console.error('Error: src directory not found');
-        return;
-    }
-    const files = fs_1.default.readdirSync(srcDir);
-    const tsFiles = files.filter(file => file.endsWith('.ts') &&
-        file !== 'converter.ts' &&
-        !file.endsWith('.d.ts'));
-    if (tsFiles.length === 0) {
-        console.log('No TypeScript files found in the src directory.');
-        return;
-    }
-    console.log("开始编译......");
-    for (const tsFile of tsFiles) {
-        const filePath = path_1.default.join(srcDir, tsFile);
-        const sourceCode = fs_1.default.readFileSync(filePath, 'utf-8');
-        // 创建 TypeScript 源文件
-        const sourceFile = typescript_1.default.createSourceFile(tsFile, sourceCode, typescript_1.default.ScriptTarget.Latest, true);
-        // 转换为 Lua
-        const converter = new TsToLuaConverter();
-        const luaCode = converter.convert(sourceFile);
-        // 写入 Lua 文件到 dist 目录
-        let distDir = path_1.default.join(currentDir, noutDir);
-        if (outDir) {
-            distDir = outDir;
-        }
-        if (!fs_1.default.existsSync(distDir)) {
-            fs_1.default.mkdirSync(distDir);
-        }
-        const luaFileName = tsFile.replace('.ts', '.lua');
-        const luaFilePath = path_1.default.join(distDir, luaFileName);
-        fs_1.default.writeFileSync(luaFilePath, luaCode);
-        console.log(`Converted ${tsFile} to ${luaFileName}`);
-    }
-    console.log("编译结束。");
-}
-// 执行转换
-convertTsFilesToLua();
+exports.default = TsToLuaConverter;

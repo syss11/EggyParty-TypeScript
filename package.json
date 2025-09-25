@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "convert": "node dist/converter.js"
+    "dev": "tsc && node dist/start.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "@types/node": "^24.5.2",
+    "chokidar": "^4.0.3",
     "typescript": "^5.9.2"
   }
 }

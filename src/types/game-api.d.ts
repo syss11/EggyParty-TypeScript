@@ -4565,4 +4565,4 @@ declare interface Unit {
     // 具体方法将在后续补充
 }
 
-declare function print(text:string):void;
+declare function print(text:any):void;
