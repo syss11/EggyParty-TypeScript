@@ -27,17 +27,13 @@ npm install
 ```
 
 ### 4. 编写 TypeScript 代码
-在项目 `src` 文件夹下编辑 `main.ts` 或其他ts文件，使用 TypeScript 语法编写逻辑。
+在项目 `src/code` 文件夹下编辑 `main.ts` 或其他ts文件，使用 TypeScript 语法编写逻辑。
 
 
 ### 5. 编译/转换代码
-- **首次运行**：执行构建命令初始化项目（仅需执行一次）
-  ```bash
-  npm run build
-  ```
 - **更新代码后**：执行转换命令生成 Lua 结果（所有ts文件都转换）
   ```bash
-  npm run convert
+  npm run dev
   ```
 
 ### 6. 获取输出结果
