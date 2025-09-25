@@ -349,12 +349,16 @@ class TsToLuaConverter {
     // ====================== import/require 支持 ======================
     visitImportDeclaration(node: ts.ImportDeclaration) {
         const moduleSpecifier = node.moduleSpecifier.getText().replace(/['"]/g, '');
-        
+        if (moduleSpecifier.includes('../types/')){
+            //这个无视
+            return
+        }
         if (node.importClause) {
             // 默认导入 import React from 'react'
             if (node.importClause.name) {
                 const defaultImport = node.importClause.name.text;
                 this.importMap.set(defaultImport, moduleSpecifier);
+                
                 this.addLine(`local ${defaultImport} = require("${moduleSpecifier}")`);
             }
             
@@ -587,6 +591,7 @@ function convertTsFilesToLua() {
         return;
     }
     
+    console.log("开始编译......")
     for (const tsFile of tsFiles) {
         const filePath = path.join(srcDir, tsFile);
         const sourceCode = fs.readFileSync(filePath, 'utf-8');
@@ -617,7 +622,10 @@ function convertTsFilesToLua() {
         fs.writeFileSync(luaFilePath, luaCode);
         
         console.log(`Converted ${tsFile} to ${luaFileName}`);
+
     }
+
+    console.log("编译结束。")
 }
 
 // 执行转换

@@ -6,6 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const typescript_1 = __importDefault(require("typescript"));
+//导出目录，相对nodejs项目工作目录
+const noutDir = 'dist';
+//导出目录，绝对目录，默认不使用，覆盖相对目录设置
+const outDir = '';
 class TsToLuaConverter {
     constructor() {
         this.indentLevel = 0;
@@ -15,6 +19,7 @@ class TsToLuaConverter {
         this.thisCaptureStack = [];
         this.luaCode = '';
         this.importMap = new Map();
+        this.interfaceMap = new Map();
         this.indentLevel = 0;
         this.currentFunction = null;
         this.luaCode = '';
@@ -31,6 +36,9 @@ class TsToLuaConverter {
                 break;
             case typescript_1.default.SyntaxKind.ImportDeclaration:
                 this.visitImportDeclaration(node);
+                break;
+            case typescript_1.default.SyntaxKind.InterfaceDeclaration:
+                this.visitInterfaceDeclaration(node);
                 break;
             case typescript_1.default.SyntaxKind.ClassDeclaration:
                 this.visitClassDeclaration(node);
@@ -84,39 +92,42 @@ class TsToLuaConverter {
                 typescript_1.default.forEachChild(node, child => this.processNode(child));
         }
     }
-    // ====================== 新增：import/require 支持 ======================
-    visitImportDeclaration(node) {
-        const moduleSpecifier = node.moduleSpecifier.getText().replace(/['"]/g, '');
-        if (node.importClause) {
-            // 默认导入 import React from 'react'
-            if (node.importClause.name) {
-                const defaultImport = node.importClause.name.text;
-                this.importMap.set(defaultImport, moduleSpecifier);
-                this.addLine(`local ${defaultImport} = require("${moduleSpecifier}")`);
+    // ====================== 接口支持 ======================
+    visitInterfaceDeclaration(node) {
+        const interfaceName = node.name.text;
+        const properties = [];
+        // 收集接口属性
+        node.members.forEach(member => {
+            if (typescript_1.default.isPropertySignature(member)) {
+                const name = member.name.getText();
+                properties.push(name);
             }
-            // 命名空间导入 import * as React from 'react'
-            if (node.importClause.namedBindings && typescript_1.default.isNamespaceImport(node.importClause.namedBindings)) {
-                const namespaceImport = node.importClause.namedBindings.name.text;
-                this.importMap.set(namespaceImport, moduleSpecifier);
-                this.addLine(`local ${namespaceImport} = require("${moduleSpecifier}")`);
-            }
-            // 命名导入 import { Component } from 'react'
-            if (node.importClause.namedBindings && typescript_1.default.isNamedImports(node.importClause.namedBindings)) {
-                const imports = node.importClause.namedBindings.elements.map(element => {
-                    const name = element.name.text;
-                    const propertyName = element.propertyName ? element.propertyName.text : name;
-                    return `${name} = ${propertyName}`;
-                });
-                this.addLine(`local ${imports.join(', ')} = require("${moduleSpecifier}")`);
-            }
-        }
+        });
+        // 将接口信息存储在映射中（不生成实际代码）
+        this.interfaceMap.set(interfaceName, properties.join(','));
+        this.addLine(`-- Interface: ${interfaceName}`);
     }
-    // ====================== 新增：类支持 ======================
+    // ====================== 类支持 ======================
     visitClassDeclaration(node) {
         const className = node.name?.text || 'AnonymousClass';
         this.currentClass = className;
+        // 处理继承
+        const heritageClauses = node.heritageClauses;
+        let parentClass = '';
+        if (heritageClauses) {
+            for (const clause of heritageClauses) {
+                if (clause.token === typescript_1.default.SyntaxKind.ExtendsKeyword) {
+                    // 只取第一个父类
+                    parentClass = clause.types[0].expression.getText();
+                }
+            }
+        }
         // 创建类表
         this.addLine(`${className} = {}`);
+        // 设置继承
+        if (parentClass) {
+            this.addLine(`setmetatable(${className}, {__index = ${parentClass}})`);
+        }
         this.addLine(`${className}.__index = ${className}`);
         this.addLine('');
         // 处理类成员
@@ -127,21 +138,45 @@ class TsToLuaConverter {
             else if (typescript_1.default.isMethodDeclaration(member)) {
                 this.visitMethodDeclaration(member, className);
             }
+            else if (typescript_1.default.isConstructorDeclaration(member)) {
+                this.visitConstructorDeclaration(member, className, parentClass);
+            }
         });
         this.currentClass = null;
+    }
+    visitConstructorDeclaration(node, className, parentClass) {
+        const params = node.parameters.map(p => p.name.getText()).join(', ');
+        // 创建构造函数
+        this.addLine(`function ${className}.new(${params})`);
+        this.indentLevel++;
+        // 创建实例
+        this.addLine(`local self = setmetatable({}, ${className})`);
+        // 处理父类构造函数调用
+        if (node.body) {
+            const superCall = this.findSuperCall(node.body);
+            if (superCall) {
+                const args = superCall.arguments.map(arg => this.visitExpression(arg)).join(', ');
+                this.addLine(`${parentClass}.new(${args})`);
+            }
+        }
+        // 处理属性初始化
+        this.addLine('-- 初始化属性');
+        // 处理构造函数体
+        if (node.body) {
+            this.processNode(node.body);
+        }
+        this.addLine('return self');
+        this.indentLevel--;
+        this.addLine('end');
+        this.addLine('');
     }
     visitClassProperty(node, className) {
         const propName = node.name.getText();
         const initializer = node.initializer
             ? this.visitExpression(node.initializer)
             : 'nil';
-        this.addLine(`function ${className}.new()`);
-        this.indentLevel++;
-        this.addLine(`local self = setmetatable({}, ${className})`);
-        this.addLine(`self.${propName} = ${initializer}`);
-        this.addLine(`return self`);
-        this.indentLevel--;
-        this.addLine(`end`);
+        // 在构造函数中初始化属性
+        this.addLine(`-- 属性: ${propName}`);
     }
     visitMethodDeclaration(node, className) {
         const methodName = node.name.getText();
@@ -157,7 +192,19 @@ class TsToLuaConverter {
         this.addLine('end');
         this.addLine('');
     }
-    // ====================== 新增：箭头函数支持 ======================
+    // ====================== 辅助方法 ======================
+    findSuperCall(node) {
+        for (const statement of node.statements) {
+            if (typescript_1.default.isExpressionStatement(statement)) {
+                const expr = statement.expression;
+                if (typescript_1.default.isCallExpression(expr) && expr.expression.kind === typescript_1.default.SyntaxKind.SuperKeyword) {
+                    return expr;
+                }
+            }
+        }
+        return null;
+    }
+    // ====================== 箭头函数支持 ======================
     visitArrowFunction(node) {
         const oldFunctionContext = this.currentFunction;
         this.currentFunction = { name: 'arrow', isArrow: true };
@@ -197,7 +244,7 @@ class TsToLuaConverter {
         }
         return funcCode;
     }
-    // ====================== 新增：this 支持 ======================
+    // ====================== this 支持 ======================
     visitThisExpression(node) {
         // 在箭头函数中使用捕获的 this 变量
         if (this.currentFunction?.isArrow && this.thisCaptureVar) {
@@ -210,7 +257,7 @@ class TsToLuaConverter {
         // 全局 this 转换为 _G (Lua 全局表)
         return '_G';
     }
-    // ====================== 修改：函数声明支持 this ======================
+    // ====================== 函数声明支持 this ======================
     visitFunctionDeclaration(node) {
         const name = node.name?.text || 'anonymous';
         const params = node.parameters.map(p => p.name.getText()).join(', ');
@@ -226,7 +273,7 @@ class TsToLuaConverter {
         this.addLine('end');
         this.currentFunction = null;
     }
-    // ====================== 修改：调用表达式支持 this ======================
+    // ====================== 调用表达式支持 this ======================
     visitCallExpression(node) {
         const expression = node.expression;
         // 处理方法调用 (obj.method())
@@ -247,7 +294,38 @@ class TsToLuaConverter {
         const args = node.arguments.map(arg => this.visitExpression(arg)).join(', ');
         return `${func}(${args})`;
     }
-    // ====================== 原有方法保持不变 ======================
+    // ====================== import/require 支持 ======================
+    visitImportDeclaration(node) {
+        const moduleSpecifier = node.moduleSpecifier.getText().replace(/['"]/g, '');
+        if (moduleSpecifier.includes('../types/')) {
+            //这个无视
+            return;
+        }
+        if (node.importClause) {
+            // 默认导入 import React from 'react'
+            if (node.importClause.name) {
+                const defaultImport = node.importClause.name.text;
+                this.importMap.set(defaultImport, moduleSpecifier);
+                this.addLine(`local ${defaultImport} = require("${moduleSpecifier}")`);
+            }
+            // 命名空间导入 import * as React from 'react'
+            if (node.importClause.namedBindings && typescript_1.default.isNamespaceImport(node.importClause.namedBindings)) {
+                const namespaceImport = node.importClause.namedBindings.name.text;
+                this.importMap.set(namespaceImport, moduleSpecifier);
+                this.addLine(`local ${namespaceImport} = require("${moduleSpecifier}")`);
+            }
+            // 命名导入 import { Component } from 'react'
+            if (node.importClause.namedBindings && typescript_1.default.isNamedImports(node.importClause.namedBindings)) {
+                const imports = node.importClause.namedBindings.elements.map(element => {
+                    const name = element.name.text;
+                    const propertyName = element.propertyName ? element.propertyName.text : name;
+                    return `${name} = ${propertyName}`;
+                });
+                this.addLine(`local ${imports.join(', ')} = require("${moduleSpecifier}")`);
+            }
+        }
+    }
+    // ====================== 其他方法 ======================
     visitSourceFile(node) {
         typescript_1.default.forEachChild(node, child => this.processNode(child));
     }
@@ -423,6 +501,7 @@ function convertTsFilesToLua() {
         console.log('No TypeScript files found in the src directory.');
         return;
     }
+    console.log("开始编译......");
     for (const tsFile of tsFiles) {
         const filePath = path_1.default.join(srcDir, tsFile);
         const sourceCode = fs_1.default.readFileSync(filePath, 'utf-8');
@@ -432,7 +511,10 @@ function convertTsFilesToLua() {
         const converter = new TsToLuaConverter();
         const luaCode = converter.convert(sourceFile);
         // 写入 Lua 文件到 dist 目录
-        const distDir = path_1.default.join(currentDir, 'dist');
+        let distDir = path_1.default.join(currentDir, noutDir);
+        if (outDir) {
+            distDir = outDir;
+        }
         if (!fs_1.default.existsSync(distDir)) {
             fs_1.default.mkdirSync(distDir);
         }
@@ -441,6 +523,7 @@ function convertTsFilesToLua() {
         fs_1.default.writeFileSync(luaFilePath, luaCode);
         console.log(`Converted ${tsFile} to ${luaFileName}`);
     }
+    console.log("编译结束。");
 }
 // 执行转换
 convertTsFilesToLua();
