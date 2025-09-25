@@ -53,7 +53,7 @@ const converter = new TsToLuaConverter();
 
 // 初始化转换所有文件
 function convertAllFiles() {
-    console.log('开始初始转换...');
+    console.log('⭐️  开始初始转换...');
     
     const files = fs.readdirSync(inDir);
     let convertedCount = 0;
@@ -66,7 +66,7 @@ function convertAllFiles() {
         }
     });
     
-    console.log(`初始转换完成。已转换 ${convertedCount} 个文件。`);
+    console.log(`✅  初始转换完成。已转换 ${convertedCount} 个文件。`);
 }
 
 // 转换单个文件
@@ -87,7 +87,7 @@ function convertFile(filePath: string) {
         const luaCode = converter.convert(sourceFile);
         fs.writeFileSync(outputPath, luaCode);
         
-        console.log(`已转换 ${fileName} 为 ${luaFileName}`);
+        console.log(`➡️  已转换 ${fileName} 为 ${luaFileName}`);
     } catch (error: unknown) {
         const errorMessage = error instanceof Error ? error.message : String(error);
         console.error(`转换 ${fileName} 时出错:`, errorMessage);
@@ -105,13 +105,13 @@ const watcher = chokidar.watch(inDir, {
 watcher
     .on('add', (filePath: string) => {
         if (path.extname(filePath) === '.ts') {
-            console.log(`检测到新文件: ${path.basename(filePath)}`);
+            console.log(`❕  检测到新文件: ${path.basename(filePath)}`);
             convertFile(filePath);
         }
     })
     .on('change', (filePath: string) => {
         if (path.extname(filePath) === '.ts') {
-            console.log(`文件已修改: ${path.basename(filePath)}`);
+            console.log(`💻  文件已修改: ${path.basename(filePath)}`);
             convertFile(filePath);
         }
     })
@@ -122,33 +122,33 @@ watcher
             
             if (fs.existsSync(outputPath)) {
                 fs.unlinkSync(outputPath);
-                console.log(`已删除 ${luaFileName} (源文件已移除)`);
+                console.log(`❌已删除 ${luaFileName} (源文件已移除)`);
             }
         }
     })
     .on('error', (error: Error) => {
-        console.error('监听器错误:', error.message);
+        console.error('❌错误:', error.message);
     });
 
 // 初始转换
 convertAllFiles();
 
-console.log(`正在监听 ${inDir} 目录的更改...`);
-console.log('按 Ctrl+C 停止监听。');
+console.log(`⚙️  开发环境启动，为 ${inDir} 目录...`);
+console.log('➡️  按 Ctrl+C 停止。');
 
 // 优雅退出处理
 process.on('SIGINT', () => {
-    console.log('\n正在停止监听器...');
+    console.log('\n⚙️  正在停止...');
     watcher.close().then(() => {
-        console.log('监听器已停止。再见！');
+        console.log('结束。');
         process.exit(0);
     });
 });
 
 process.on('SIGTERM', () => {
-    console.log('\n收到终止信号。正在停止监听器...');
+    console.log('\n收到终止信号...');
     watcher.close().then(() => {
-        console.log('监听器已停止。再见！');
+        console.log('再见！');
         process.exit(0);
     });
 });

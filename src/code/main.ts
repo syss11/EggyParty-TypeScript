@@ -6,7 +6,11 @@ import { GameAPI, LuaAPI,GlobalAPI ,print, Vector3, Role, Character }  from "../
 
 print('hello?ts')
 LuaAPI.call_delay_frame(1,()=>{
-    print(1)
-    print(2)
-    print(3)
+    LuaAPI.call_delay_frame(1,()=>{
+  LuaAPI.call_delay_frame(1,()=>{
+  LuaAPI.call_delay_frame(2,()=>{
+    
+})  
+})  
+})
 })
