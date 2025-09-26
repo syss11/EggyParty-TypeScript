@@ -1,4 +1,77 @@
 {
-    "inputDir":"./src/code",
-    "outputDir":"./dist/code"
+    "inputDir": "./src/code",
+    "outputDir": "./dist/code",
+    "use_ts_basic_methods":true,
+    "reserved_methods": {
+        "Array": [
+        "map",
+        "filter",
+        "reduce",
+        "forEach",
+        "find",
+        "some",
+        "every",
+        "includes",
+        "concat",
+        "slice",
+        "indexOf",
+        "join",
+        "reverse",
+        "sort",
+        "flat",
+        "fill",
+        "pop",
+        "push",
+        "shift",
+        "unshift",
+        "splice"
+    ],
+    "String": [
+        "charAt",
+        "charCodeAt",
+        "concat",
+        "endsWith",
+        "includes",
+        "indexOf",
+        "lastIndexOf",
+        "match",
+        "padEnd",
+        "padStart",
+        "repeat",
+        "replace",
+        "replaceAll",
+        "search",
+        "slice",
+        "split",
+        "startsWith",
+        "substring",
+        "toLowerCase",
+        "toUpperCase",
+        "trim",
+        "trimEnd",
+        "trimStart"
+    ],
+    "Number": [
+        "toExponential",
+        "toFixed",
+        "toLocaleString",
+        "toPrecision",
+        "toString"
+    ],
+    "Object": [
+        "hasOwnProperty",
+        "toLocaleString",
+        "toString",
+        "valueOf"
+    ],
+        "JSON": [
+            "parse",
+            "stringify"
+        ],
+        "RegExp": [
+            "exec",
+            "test",
+            "toString"
+        ]
+    }
 }

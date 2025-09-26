@@ -2,11 +2,14 @@
 const fs = require('fs');
 const path = require('path');
 const chokidar = require('chokidar');
-import TsToLuaConverter from './converter'
+import {TsToLuaConverter,BasicTypeMethods} from './converter'
 import ts from 'typescript';
 const IGNORED_FILES = /(^|[\/\\])\../; // 忽略隐藏文件
+
+
 interface tConfig{
-    inputDir:string,outputDir:string
+    inputDir:string,outputDir:string,
+    reserved_methods:BasicTypeMethods,use_ts_basic_methods:Boolean
 }
 
 function loadConfig(): tConfig {
@@ -49,16 +52,16 @@ if (!fs.existsSync(outDir)) {
     fs.mkdirSync(outDir, { recursive: true });
 }
 // 创建转换器实例
-const converter = new TsToLuaConverter();
+const converter = new TsToLuaConverter(tconfig.use_ts_basic_methods?tconfig.reserved_methods:{});
 
 // 初始化转换所有文件
 function convertAllFiles() {
-    console.log('⭐️  开始初始转换...');
+    console.log('⭐️ 开始初始转换...');
     
     const files = fs.readdirSync(inDir);
     let convertedCount = 0;
     
-    // 修复：为 file 参数添加类型声明
+    
     files.forEach((file: string) => {
         if (path.extname(file) === '.ts' && !IGNORED_FILES.test(file)) {
             convertFile(path.join(inDir, file));
@@ -66,7 +69,7 @@ function convertAllFiles() {
         }
     });
     
-    console.log(`✅  初始转换完成。已转换 ${convertedCount} 个文件。`);
+    console.log(`✅ 初始转换完成。已转换 ${convertedCount} 个文件。`);
 }
 
 // 转换单个文件
@@ -105,13 +108,13 @@ const watcher = chokidar.watch(inDir, {
 watcher
     .on('add', (filePath: string) => {
         if (path.extname(filePath) === '.ts') {
-            console.log(`❕  检测到新文件: ${path.basename(filePath)}`);
+            console.log(`❕ 检测到新文件: ${path.basename(filePath)}`);
             convertFile(filePath);
         }
     })
     .on('change', (filePath: string) => {
         if (path.extname(filePath) === '.ts') {
-            console.log(`💻  文件已修改: ${path.basename(filePath)}`);
+            console.log(`💻 文件已修改: ${path.basename(filePath)}`);
             convertFile(filePath);
         }
     })
@@ -135,6 +138,43 @@ convertAllFiles();
 
 console.log(`⚙️  开发环境启动，为 ${inDir} 目录...`);
 console.log('➡️  按 Ctrl+C 停止。');
+
+
+const workDir = process.cwd(); // 当前工作目录
+const srcFile = path.join(workDir, 'src', 'tslib', 'tsbasic.lua');
+const destFile = path.join(outDir, 'tsbasic.lua');
+function ensureTsBasicLuaExists() {
+    try {
+        // 检查目标文件是否存在
+        if (!fs.existsSync(destFile)) {
+            
+            // 检查源文件是否存在
+            if (!fs.existsSync(srcFile)) {
+                throw new Error(`源文件 ${srcFile} 不存在`);
+            }
+            
+            // 确保输出目录存在
+            if (!fs.existsSync(outDir)) {
+                console.log(`创建目录: ${outDir}`);
+                fs.mkdirSync(outDir, { recursive: true });
+            }
+            
+            // 复制文件
+            console.log(`复制ts支持文件: ${srcFile} -> ${destFile}`);
+            fs.copyFileSync(srcFile, destFile);
+            
+        } 
+    } catch (error) {
+        console.error('ts支持文件移动失败')
+    }
+}
+
+// 执行检查
+if (tconfig.use_ts_basic_methods){
+
+    ensureTsBasicLuaExists();
+}
+
 
 // 优雅退出处理
 process.on('SIGINT', () => {

@@ -3,9 +3,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TsToLuaConverter = void 0;
 const typescript_1 = __importDefault(require("typescript"));
+const LuaInitCode = `local basic_types = require "tsbasic"
+local Array = basic_types.Array
+local String = basic_types.String
+local Number = basic_types.Number
+local Object = basic_types.Object\n`;
 class TsToLuaConverter {
-    constructor() {
+    constructor(basicTypeMethods = {}) {
         this.indentLevel = 0;
         this.currentFunction = null;
         this.currentClass = null;
@@ -17,9 +23,10 @@ class TsToLuaConverter {
         this.indentLevel = 0;
         this.currentFunction = null;
         this.luaCode = '';
+        this.basicTypeMethods = basicTypeMethods;
     }
     convert(sourceFile) {
-        this.luaCode = '';
+        this.luaCode = this.basicTypeMethods ? LuaInitCode : '';
         this.processNode(sourceFile);
         return this.luaCode;
     }
@@ -82,6 +89,8 @@ class TsToLuaConverter {
                 return this.visitArrayLiteral(node);
             case typescript_1.default.SyntaxKind.ElementAccessExpression:
                 return this.visitElementAccess(node);
+            case typescript_1.default.SyntaxKind.FunctionExpression:
+                return this.visitFunctionExpression(node);
             default:
                 typescript_1.default.forEachChild(node, child => this.processNode(child));
         }
@@ -267,26 +276,53 @@ class TsToLuaConverter {
         this.addLine('end');
         this.currentFunction = null;
     }
-    // ====================== 调用表达式支持 this ======================
+    // 修改调用表达式处理
     visitCallExpression(node) {
         const expression = node.expression;
         // 处理方法调用 (obj.method())
         if (typescript_1.default.isPropertyAccessExpression(expression)) {
             const obj = this.visitExpression(expression.expression);
-            const method = expression.name.text;
-            const args = node.arguments.map(arg => this.visitExpression(arg)).join(', ');
+            let method = expression.name.text;
+            // 检查是否是基础类型方法
+            const type = this.getBasicTypeForMethod(method);
+            if (type) {
+                if (type === 'String' && method === 'repeat') {
+                    method = 'rep'; //老六lua，居然把这玩意当保留字
+                }
+                const args = node.arguments.map(arg => this.visitExpression(arg)).join(', ');
+                return `${type}.${method}(${obj}, ${args})`;
+            }
             // 检查是否是方法调用（对象为表或类）
             if (typescript_1.default.isIdentifier(expression.expression) &&
                 (this.importMap.has(expression.expression.text) ||
                     this.currentClass === expression.expression.text)) {
+                const args = node.arguments.map(arg => this.visitExpression(arg)).join(', ');
                 return `${obj}:${method}(${args})`;
             }
+            // 普通方法调用
+            const args = node.arguments.map(arg => this.visitExpression(arg)).join(', ');
             return `${obj}.${method}(${args})`;
+        }
+        // 处理静态方法调用 (Type.method())
+        if (typescript_1.default.isIdentifier(expression) && this.basicTypeMethods[expression.text]) {
+            const type = expression.text;
+            const method = expression.text; // 静态方法调用没有属性访问
+            const args = node.arguments.map(arg => this.visitExpression(arg)).join(', ');
+            return `${type}.${method}(${args})`;
         }
         // 处理普通函数调用
         const func = this.visitExpression(node.expression);
         const args = node.arguments.map(arg => this.visitExpression(arg)).join(', ');
         return `${func}(${args})`;
+    }
+    // 获取方法所属的基础类型
+    getBasicTypeForMethod(method) {
+        for (const type in this.basicTypeMethods) {
+            if (this.basicTypeMethods[type].includes(method)) {
+                return type;
+            }
+        }
+        return null;
     }
     // ====================== import/require 支持 ======================
     visitImportDeclaration(node) {
@@ -385,6 +421,45 @@ class TsToLuaConverter {
         const expr = node.expression ? this.visitExpression(node.expression) : '';
         this.addLine(`return ${expr}`);
     }
+    visitFunctionExpression(node) {
+        const oldFunctionContext = this.currentFunction;
+        this.currentFunction = { name: 'anonymous', isArrow: false };
+        // 处理 this 捕获
+        let captureCode = '';
+        if (this.currentClass || this.thisCaptureVar) {
+            const outerThisVar = this.thisCaptureVar || 'self';
+            const newThisVar = `_this_${this.indentLevel}`;
+            this.thisCaptureStack.push(this.thisCaptureVar || '');
+            this.thisCaptureVar = newThisVar;
+            captureCode = `local ${newThisVar} = ${outerThisVar}\n`;
+        }
+        // 处理参数
+        const params = node.parameters.map(p => p.name.getText()).join(', ');
+        // 处理函数体
+        let body;
+        if (typescript_1.default.isBlock(node.body)) {
+            // 多行函数体
+            const oldCode = this.luaCode;
+            this.luaCode = '';
+            this.indentLevel++;
+            this.processNode(node.body);
+            this.indentLevel--;
+            body = this.luaCode;
+            this.luaCode = oldCode;
+        }
+        else {
+            // 单行表达式
+            body = `return ${this.visitExpression(node.body)}`;
+        }
+        // 生成函数代码
+        const funcCode = `function(${params})\n${captureCode}${body}\nend`;
+        // 恢复上下文
+        this.currentFunction = oldFunctionContext;
+        if (this.thisCaptureStack.length > 0) {
+            this.thisCaptureVar = this.thisCaptureStack.pop() || null;
+        }
+        return funcCode;
+    }
     visitExpression(node) {
         switch (node.kind) {
             case typescript_1.default.SyntaxKind.BinaryExpression:
@@ -408,6 +483,8 @@ class TsToLuaConverter {
                 return this.visitElementAccess(node);
             case typescript_1.default.SyntaxKind.ArrowFunction:
                 return this.visitArrowFunction(node);
+            case typescript_1.default.SyntaxKind.FunctionExpression:
+                return this.visitFunctionExpression(node);
             default:
                 return 'nil';
         }
@@ -478,4 +555,4 @@ class TsToLuaConverter {
         this.luaCode += '    '.repeat(this.indentLevel) + text + '\n';
     }
 }
-exports.default = TsToLuaConverter;
+exports.TsToLuaConverter = TsToLuaConverter;

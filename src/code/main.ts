@@ -5,12 +5,5 @@ import Enums from "../types/enums";
 import { GameAPI, LuaAPI,GlobalAPI ,print, Vector3, Role, Character }  from "../types/game-api"
 
 print('hello?ts')
-LuaAPI.call_delay_frame(1,()=>{
-    LuaAPI.call_delay_frame(1,()=>{
-  LuaAPI.call_delay_frame(1,()=>{
-  LuaAPI.call_delay_frame(2,()=>{
-    
-})  
-})  
-})
-})
+
+
