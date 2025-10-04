@@ -91,6 +91,8 @@ class TsToLuaConverter {
                 return this.visitElementAccess(node);
             case typescript_1.default.SyntaxKind.FunctionExpression:
                 return this.visitFunctionExpression(node);
+            case typescript_1.default.SyntaxKind.NewExpression:
+                return this.visitNewExpression(node);
             default:
                 typescript_1.default.forEachChild(node, child => this.processNode(child));
         }
@@ -109,6 +111,38 @@ class TsToLuaConverter {
         // 将接口信息存储在映射中（不生成实际代码）
         this.interfaceMap.set(interfaceName, properties.join(','));
         this.addLine(`-- Interface: ${interfaceName}`);
+    }
+    visitNewExpression(node) {
+        const expression = node.expression;
+        const args = node.arguments?.map(arg => this.visitExpression(arg)).join(', ') || '';
+        // 处理类实例化 (new MyClass())
+        if (typescript_1.default.isIdentifier(expression)) {
+            const className = expression.text;
+            // 检查是否是基础类型
+            if (this.basicTypeMethods[className]) {
+                return `${className}(${args})`;
+            }
+            // 检查是否是导入的模块
+            if (this.importMap.has(className)) {
+                return `${className}(${args})`;
+            }
+            // 普通类实例化
+            return `${className}(${args})`;
+        }
+        // 处理表达式实例化 (new (getConstructor())())
+        if (typescript_1.default.isCallExpression(expression)) {
+            const constructorFunc = this.visitExpression(expression);
+            return `(${constructorFunc})(${args})`;
+        }
+        // 处理属性访问实例化 (new this.MyClass())
+        if (typescript_1.default.isPropertyAccessExpression(expression)) {
+            const obj = this.visitExpression(expression.expression);
+            const prop = expression.name.text;
+            return `${obj}.${prop}.new(${args})`;
+        }
+        // 默认处理
+        const constructor = this.visitExpression(expression);
+        return `${constructor}(${args})`;
     }
     // ====================== 类支持 ======================
     visitClassDeclaration(node) {
@@ -159,7 +193,8 @@ class TsToLuaConverter {
             const superCall = this.findSuperCall(node.body);
             if (superCall) {
                 const args = superCall.arguments.map(arg => this.visitExpression(arg)).join(', ');
-                this.addLine(`${parentClass}.new(${args})`);
+                this.addLine(`self.super = ${parentClass}.new(${args})`);
+                this.addLine(`setmetatable(self, {__index = self.super})`);
             }
         }
         // 处理属性初始化
@@ -485,6 +520,8 @@ class TsToLuaConverter {
                 return this.visitArrowFunction(node);
             case typescript_1.default.SyntaxKind.FunctionExpression:
                 return this.visitFunctionExpression(node);
+            case typescript_1.default.SyntaxKind.NewExpression:
+                return this.visitNewExpression(node);
             default:
                 return 'nil';
         }
