@@ -12,6 +12,7 @@ declare class Vector3 {
     pitch: Fixed;
     yaw: Fixed;
 
+    constructor(x:Fixed,y:Fixed,z:Fixed);
     // 操作符重载声明
     add(rhs: Vector3): Vector3;
     add(rhs: Fixed): Vector3;
@@ -53,7 +54,8 @@ declare class Quaternion {
     pitch: Fixed;
     roll: Fixed;
     euler: Vector3;
-
+    
+    constructor(x:Fixed,y:Fixed,z:Fixed,w:Fixed)
     // 操作符重载声明
     mul(rhs: Vector3): Vector3;
     mul(rhs: Quaternion): Quaternion;
