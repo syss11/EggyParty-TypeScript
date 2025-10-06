@@ -5,5 +5,3 @@ import Enums from "../types/enums";
 import { GameAPI, LuaAPI,GlobalAPI ,print, Vector3, Role, Character }  from "../types/game-api"
 
 print('hello?ts')
-let a=new Vector3(1,1,1)
-

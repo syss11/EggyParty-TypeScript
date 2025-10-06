@@ -676,19 +676,65 @@ class TsToLuaConverter {
 
     getLuaOperator(kind: ts.SyntaxKind): string {
         switch (kind) {
-            case ts.SyntaxKind.PlusToken: return '+';
-            case ts.SyntaxKind.MinusToken: return '-';
-            case ts.SyntaxKind.AsteriskToken: return '*';
-            case ts.SyntaxKind.SlashToken: return '/';
-            case ts.SyntaxKind.EqualsEqualsToken: return '==';
-            case ts.SyntaxKind.ExclamationEqualsToken: return '~=';
-            case ts.SyntaxKind.LessThanToken: return '<';
-            case ts.SyntaxKind.GreaterThanToken: return '>';
-            case ts.SyntaxKind.LessThanEqualsToken: return '<=';
-            case ts.SyntaxKind.GreaterThanEqualsToken: return '>=';
-            case ts.SyntaxKind.PlusEqualsToken: return '=';
-            case ts.SyntaxKind.MinusEqualsToken: return '=';
-            default: return 'unknown';
+            
+        // 算术运算符
+        case ts.SyntaxKind.PlusToken: return '+';
+        case ts.SyntaxKind.MinusToken: return '-';
+        case ts.SyntaxKind.AsteriskToken: return '*';
+        case ts.SyntaxKind.SlashToken: return '/';
+        case ts.SyntaxKind.PercentToken: return '%';
+        case ts.SyntaxKind.AsteriskAsteriskToken: return '^'; // 幂运算 ** 在 Lua 中是 ^
+        
+        // 比较运算符
+        case ts.SyntaxKind.EqualsEqualsToken: return '==';
+        case ts.SyntaxKind.ExclamationEqualsToken: return '~=';
+        case ts.SyntaxKind.LessThanToken: return '<';
+        case ts.SyntaxKind.GreaterThanToken: return '>';
+        case ts.SyntaxKind.LessThanEqualsToken: return '<=';
+        case ts.SyntaxKind.GreaterThanEqualsToken: return '>=';
+        
+        // 逻辑运算符
+        case ts.SyntaxKind.AmpersandAmpersandToken: return 'and';
+        case ts.SyntaxKind.BarBarToken: return 'or';
+        case ts.SyntaxKind.ExclamationToken: return 'not';
+        
+        // 位运算符（Lua 5.3+ 支持）
+        case ts.SyntaxKind.AmpersandToken: return '&';
+        case ts.SyntaxKind.BarToken: return '|';
+        case ts.SyntaxKind.CaretToken: return '~'; // 按位异或
+        case ts.SyntaxKind.TildeToken: return '~'; // 按位非
+        
+        // 赋值运算符
+        case ts.SyntaxKind.EqualsToken: return '=';
+        case ts.SyntaxKind.PlusEqualsToken: return '=';
+        case ts.SyntaxKind.MinusEqualsToken: return '=';
+        case ts.SyntaxKind.AsteriskEqualsToken: return '=';
+        case ts.SyntaxKind.SlashEqualsToken: return '=';
+        case ts.SyntaxKind.PercentEqualsToken: return '=';
+        case ts.SyntaxKind.AsteriskAsteriskEqualsToken: return '='; // **=
+        case ts.SyntaxKind.AmpersandEqualsToken: return '=';
+        case ts.SyntaxKind.BarEqualsToken: return '=';
+        case ts.SyntaxKind.CaretEqualsToken: return '=';
+        case ts.SyntaxKind.LessThanLessThanEqualsToken: return '=';
+        case ts.SyntaxKind.GreaterThanGreaterThanEqualsToken: return '=';
+        case ts.SyntaxKind.GreaterThanGreaterThanGreaterThanEqualsToken: return '=';
+        
+        // 其他运算符
+        case ts.SyntaxKind.QuestionQuestionToken: return 'or'; // 空值合并 ??
+        
+        case ts.SyntaxKind.DotToken: return '.'; // 属性访问
+        case ts.SyntaxKind.CommaToken: return ','; // 逗号分隔
+        
+        // 移位运算符（Lua 5.3+ 支持）
+        case ts.SyntaxKind.LessThanLessThanToken: return '<<';
+        case ts.SyntaxKind.GreaterThanGreaterThanToken: return '>>';
+        case ts.SyntaxKind.GreaterThanGreaterThanGreaterThanToken: return '>>>';
+        
+        
+        
+            default: 
+                console.log(kind)
+                return 'unknown';
         }
     }
 
