@@ -1,4 +1,4 @@
-import { BasicTypeMethods } from "./converter";
+import { BasicTypeMethods } from "./converter.js";
 import fs from "node:fs";
 import path from "node:path";
 

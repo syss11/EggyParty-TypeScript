@@ -2,9 +2,9 @@
 import fs from 'fs'
 import path from 'path'
 import chokidar, { FSWatcher } from 'chokidar';
-import {TsToLuaConverter,BasicTypeMethods} from './converter'
+import {TsToLuaConverter,BasicTypeMethods} from './converter.js'
 import ts from 'typescript';
-import config from './config';
+import config from './config.js';
 
 class Start {
     converter: TsToLuaConverter;
