@@ -1,4 +1,4 @@
-import * as Enums from './enums'
+import Enums from './enums.js'
 
 
 // 类型别名定义
