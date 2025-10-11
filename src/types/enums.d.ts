@@ -789,4 +789,4 @@ declare namespace Enums {
 }
 
 // 全局导出
-export = Enums;
+export default Enums;

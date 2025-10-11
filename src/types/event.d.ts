@@ -631,4 +631,4 @@ declare namespace EVENT {
      */
     export const UI_CUSTOM_EVENT: "UI_CUSTOM_EVENT";
 }
-export = EVENT;
+export default EVENT;
