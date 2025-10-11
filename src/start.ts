@@ -1,7 +1,7 @@
 // watch-and-convert.js
-const fs = require('fs');
-const path = require('path');
-const chokidar = require('chokidar');
+import fs from 'fs'
+import path from 'path'
+import chokidar from 'chokidar';
 import {TsToLuaConverter,BasicTypeMethods} from './converter'
 import ts from 'typescript';
 const IGNORED_FILES = /(^|[\/\\])\../; // 忽略隐藏文件
@@ -129,8 +129,8 @@ watcher
             }
         }
     })
-    .on('error', (error: Error) => {
-        console.error('❌错误:', error.message);
+    .on('error', (error) => {
+        console.error('❌错误:', (error as Error).message);
     });
 
 // 初始转换

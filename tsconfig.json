@@ -3,10 +3,9 @@
     "target": "es2024",
     "module": "node20",
     "esModuleInterop": true,
-    "moduleResolution": "node",
     "strict": true,
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
   },
   "include": ["src/**/*"]
 }
