@@ -612,17 +612,12 @@ class TsToLuaConverter {
             case typescript_1.default.SyntaxKind.GreaterThanGreaterThanGreaterThanEqualsToken: return '=';
             // 其他运算符
             case typescript_1.default.SyntaxKind.QuestionQuestionToken: return 'or'; // 空值合并 ??
-            case typescript_1.default.SyntaxKind.QuestionToken: return 'or'; // 条件运算符 ? 需要特殊处理
-            case typescript_1.default.SyntaxKind.ColonToken: return 'and'; // 条件运算符 : 需要特殊处理
             case typescript_1.default.SyntaxKind.DotToken: return '.'; // 属性访问
             case typescript_1.default.SyntaxKind.CommaToken: return ','; // 逗号分隔
             // 移位运算符（Lua 5.3+ 支持）
             case typescript_1.default.SyntaxKind.LessThanLessThanToken: return '<<';
             case typescript_1.default.SyntaxKind.GreaterThanGreaterThanToken: return '>>';
             case typescript_1.default.SyntaxKind.GreaterThanGreaterThanGreaterThanToken: return '>>>';
-            // 类型运算符
-            case typescript_1.default.SyntaxKind.InstanceOfKeyword: return 'is'; // 需要特殊处理
-            case typescript_1.default.SyntaxKind.InKeyword: return 'in'; // 需要特殊处理
             default:
                 console.log(kind);
                 return 'unknown';

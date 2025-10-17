@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
+    "target": "ES2020", // 根据项目需求调整
+    "lib": ["ES2020"], // 仅包含ES标准库，排除DOM
+    "types": ["node"], // 明确使用Node.js类型
+    "skipLibCheck": false, // 保持类型检查（可选）
+    "module": "CommonJS", // 或根据项目调整为"ESNext"
     "esModuleInterop": true,
     "moduleResolution": "node",
     "strict": true,
