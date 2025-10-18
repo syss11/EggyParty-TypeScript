@@ -6,8 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "dev": "tsc && node dist/start.js",
-    "api": "tsc && node dist/transAPI/transapi.js",
-    "api2":"tsc && node dist/transAPI/jsontots.js"
+    "api": "tsc && node dist/transAPI/transapi.js"
   },
   "keywords": [],
   "author": "",
