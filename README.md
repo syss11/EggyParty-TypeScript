@@ -1,4 +1,6 @@
 # 蛋仔派对PC编辑器-TypeScript
+## 推荐使用CLI版本[TSeggy_CLI](https://github.com/syss11/TSeggy_CLI)，本仓库只是源码，不便使用
+
 
 ## 项目简介
 基于 Node.js 开发的 TypeScript-Lua 转换工具，通过 TypeScript 的强类型特性提升蛋仔编辑器脚本开发效率，自动转换为编辑器可直接使用的 Lua 代码，并提供完整的 TS 类型化 API 声明。提供ts基础类型方法支持。
@@ -8,7 +10,7 @@
 - **Git**：用于拉取仓库代码
 - **代码编辑器**：推荐 VS Code（配合 TypeScript 扩展）
 
-## 快速开始
+## 快速开始（使用说明见CLI版本仓库）
 
 ### 1. 拉取仓库
 ```bash
