@@ -1,7 +1,7 @@
 
 // 类型别名定义
 type Fixed = number;
-declare function print(any:any):void;
+
 // 类型别名定义
 type AbilityKey = number; // 技能编号
 type AbilitySlot = number; // 技能槽位
@@ -77,7 +77,7 @@ declare class UnitGroup{}
 declare class JointAssistant{}
 declare class Timer{}
 declare class GoodsInfo{}
-
+declare function print(any:any):void;
 
 
 declare enum EVENT {
@@ -1232,71 +1232,71 @@ declare class math {
     /** 转换为整数 */
     tointeger(x: Fixed): number;
     /** 转换为实数（固定点数） */
-    static toreal(x: Fixed): Fixed;
+    toreal(x: Fixed): Fixed;
     /** 转换为固定点数 */
-    static tofixed(x: number): Fixed;
+    tofixed(x: number): Fixed;
     /** 检查是否为有限数 */
-    static isfinite(x: Fixed): boolean;
+    isfinite(x: Fixed): boolean;
     /** 正弦函数 */
-    static sin(x: Fixed): Fixed;
+    sin(x: Fixed): Fixed;
     /** 余弦函数 */
-    static cos(x: Fixed): Fixed;
+    cos(x: Fixed): Fixed;
     /** 正切函数 */
-    static tan(x: Fixed): Fixed;
+    tan(x: Fixed): Fixed;
     /** 反正弦函数 */
-    static asin(x: Fixed): Fixed;
+    asin(x: Fixed): Fixed;
     /** 反余弦函数 */
-    static acos(x: Fixed): Fixed;
+    acos(x: Fixed): Fixed;
     /** 反正切函数 */
-    static atan(x: Fixed): Fixed;
+    atan(x: Fixed): Fixed;
     /** 两个参数的反正切函数 */
-    static atan2(y: Fixed, x: Fixed): Fixed;
+    atan2(y: Fixed, x: Fixed): Fixed;
     /** 平方根 */
-    static sqrt(x: Fixed): Fixed;
+    sqrt(x: Fixed): Fixed;
     /** 自然对数 */
-    static log(x: Fixed): Fixed;
+    log(x: Fixed): Fixed;
     /** 以2为底的对数 */
-    static log2(x: Fixed): Fixed;
+    log2(x: Fixed): Fixed;
     /** 以10为底的对数 */
-    static log10(x: Fixed): Fixed;
+    log10(x: Fixed): Fixed;
     /** 计算ln(1+x) */
-    static log1p(x: Fixed): Fixed;
+    log1p(x: Fixed): Fixed;
     /** 指数函数 */
-    static exp(x: Fixed): Fixed;
+    exp(x: Fixed): Fixed;
     /** 2的幂 */
-    static exp2(x: Fixed): Fixed;
+    exp2(x: Fixed): Fixed;
     /** 取模 */
-    static fmod(x: Fixed, y: Fixed): Fixed;
+    fmod(x: Fixed, y: Fixed): Fixed;
     /** 幂函数 */
-    static pow(x: Fixed, y: Fixed): Fixed;
+    pow(x: Fixed, y: Fixed): Fixed;
     /** 四舍五入 */
-    static round(x: Fixed): Fixed;
+    round(x: Fixed): Fixed;
     /** 向上取整 */
-    static ceil(x: Fixed): Fixed;
+    ceil(x: Fixed): Fixed;
     /** 向下取整 */
-    static floor(x: Fixed): Fixed;
+    floor(x: Fixed): Fixed;
     /** 截断 */
-    static trunc(x: Fixed): Fixed;
+    trunc(x: Fixed): Fixed;
     /** 最小值 */
-    static min(a: Fixed, b: Fixed): Fixed;
+    min(a: Fixed, b: Fixed): Fixed;
     /** 最大值 */
-    static max(a: Fixed, b: Fixed): Fixed;
+    max(a: Fixed, b: Fixed): Fixed;
     /** 绝对值 */
-    static abs(a: Fixed): Fixed;
+    abs(a: Fixed): Fixed;
     /** 浮点数绝对值 */
-    static fabs(x: Fixed): Fixed;
+    fabs(x: Fixed): Fixed;
     /** 限制值在指定范围内 */
-    static clamp(x: Fixed, min: Fixed, max: Fixed): Fixed;
+    clamp(x: Fixed, min: Fixed, max: Fixed): Fixed;
     /** 比较两个数是否近似相等（误差在0.001内） */
-    static equal001(a: Fixed, b: Fixed): boolean;
+    equal001(a: Fixed, b: Fixed): boolean;
     /** 弧度转角度 */
-    static rad_to_deg(rad: Fixed): Fixed;
+    rad_to_deg(rad: Fixed): Fixed;
     /** 角度转弧度 */
-    static deg_to_rad(deg: Fixed): Fixed;
+    deg_to_rad(deg: Fixed): Fixed;
     /** 创建Vector3对象 */
-    static Vector3(x: Fixed, y: Fixed, z: Fixed): Vector3;
+    Vector3(x: Fixed, y: Fixed, z: Fixed): Vector3;
     /** 创建Quaternion对象，弧度制 */
-    static Quaternion(pitch: Fixed, yaw: Fixed, roll: Fixed): Quaternion;
+    Quaternion(pitch: Fixed, yaw: Fixed, roll: Fixed): Quaternion;
 }
 
 declare class GlobalAPI {
@@ -1354,548 +1354,548 @@ declare class GlobalAPI {
 
 declare class Ability {
     /** 技能激活冷却 */
-    static ability_active_cd(): void;
+    ability_active_cd(): void;
     /** 修改技能作用半径 */
-    static ability_api_change_affect_radius(_delta_affect_radius: Fixed): void;
+    ability_api_change_affect_radius(_delta_affect_radius: Fixed): void;
     /** 修改技能作用宽度 */
-    static ability_api_change_affect_width(_delta_affect_width: Fixed): void;
+    ability_api_change_affect_width(_delta_affect_width: Fixed): void;
     /** 修改技能施法距离 */
-    static ability_api_change_max_release_distance(_delta_level: Fixed): void;
+    ability_api_change_max_release_distance(_delta_level: Fixed): void;
     /** 降级技能等级 */
-    static ability_api_decrease_ability_level(_delta_level: number): void;
+    ability_api_decrease_ability_level(_delta_level: number): void;
     /** 获取技能的等级 */
-    static ability_api_get_ability_level(): number;
+    ability_api_get_ability_level(): number;
     /** 获取技能的最大等级 */
-    static ability_api_get_ability_max_level(): number;
+    ability_api_get_ability_max_level(): number;
     /** 获取技能的作用半径 */
-    static ability_api_get_affect_radius(): Fixed;
+    ability_api_get_affect_radius(): Fixed;
     /** 获取技能的作用宽度 */
-    static ability_api_get_affect_width(): Fixed;
+    ability_api_get_affect_width(): Fixed;
     /** 获取技能的施法距离 */
-    static ability_api_get_max_release_distance(): Fixed;
+    ability_api_get_max_release_distance(): Fixed;
     /** 增加技能等级 */
-    static ability_api_increase_ability_level(_delta_level: number): void;
+    ability_api_increase_ability_level(_delta_level: number): void;
     /** 设置技能等级 */
-    static ability_api_set_ability_level(_new_level: number): void;
+    ability_api_set_ability_level(_new_level: number): void;
     /** 设置技能最大等级 */
-    static ability_api_set_ability_max_level(_new_max_level: number): void;
+    ability_api_set_ability_max_level(_new_max_level: number): void;
     /** 设置技能的作用半径 */
-    static ability_api_set_affect_radius(_new_affect_radius: Fixed): void;
+    ability_api_set_affect_radius(_new_affect_radius: Fixed): void;
     /** 设置技能的作用宽度 */
-    static ability_api_set_affect_width(_new_affect_width: Fixed): void;
+    ability_api_set_affect_width(_new_affect_width: Fixed): void;
     /** 设置技能的施法距离 */
-    static ability_api_set_max_release_distance(_new_max_release_distance: Fixed): void;
+    ability_api_set_max_release_distance(_new_max_release_distance: Fixed): void;
     /** 技能给单位添加状态 */
-    static add_state_to_target(_unit: Unit, _state_id: Enums.BuffState): void;
+    add_state_to_target(_unit: Unit, _state_id: Enums.BuffState): void;
     /** 技能开始释放 */
-    static begin_cast(_dir_info: Vector3, _target_point: Vector3, _target_unit: Unit | undefined): void;
+    begin_cast(_dir_info: Vector3, _target_point: Vector3, _target_unit: Unit | undefined): void;
     /** 打断蓄力 */
-    static break_accumulate(): void;
+    break_accumulate(): void;
     /** 打断技能施法 */
-    static break_cast(): void;
+    break_cast(): void;
     /** 修改技能作用半径 */
-    static change_affect_radius(_delta_affect_radius: Fixed): void;
+    change_affect_radius(_delta_affect_radius: Fixed): void;
     /** 修改技能作用宽度 */
-    static change_affect_width(_delta_affect_width: Fixed): void;
+    change_affect_width(_delta_affect_width: Fixed): void;
     /** 修改技能施法距离 */
-    static change_max_release_distance(_delta_level: Fixed): void;
+    change_max_release_distance(_delta_level: Fixed): void;
     /** 降级技能等级 */
-    static downgrade_ability_level(_delta_level: number): void;
+    downgrade_ability_level(_delta_level: number): void;
     /** 技能激活冷却 */
-    static enter_cd(): void;
+    enter_cd(): void;
     /** 获取技能可以作用的角色列表 */
-    static get_ability_can_affect_character_list_v2(_height: Fixed, _use_fixed_release_point: boolean | undefined): Character[];
+    get_ability_can_affect_character_list_v2(_height: Fixed, _use_fixed_release_point: boolean | undefined): Character[];
     /** 获取技能可以作用的生物列表 */
-    static get_ability_can_affect_creature_list_v2(_height: Fixed, _use_fixed_release_point: boolean | undefined): Creature[];
+    get_ability_can_affect_creature_list_v2(_height: Fixed, _use_fixed_release_point: boolean | undefined): Creature[];
     /** 获取技能可以作用的生命体列表 */
-    static get_ability_can_affect_life_entity_list_v2(_height: Fixed, _use_fixed_release_point: boolean | undefined): LifeEntity[];
+    get_ability_can_affect_life_entity_list_v2(_height: Fixed, _use_fixed_release_point: boolean | undefined): LifeEntity[];
     /** 获取技能可以作用的组件列表 */
-    static get_ability_can_affect_obstacle_list_v2(_height: Fixed, _use_fixed_release_point: boolean | undefined): Obstacle[];
+    get_ability_can_affect_obstacle_list_v2(_height: Fixed, _use_fixed_release_point: boolean | undefined): Obstacle[];
     /** 获取技能所在槽位 */
-    static get_ability_index(): AbilitySlot;
+    get_ability_index(): AbilitySlot;
     /** 获取技能的等级 */
-    static get_ability_level(): number;
+    get_ability_level(): number;
     /** 获取技能的最大等级 */
-    static get_ability_max_level(): number;
+    get_ability_max_level(): number;
     /** 获取技能所在槽位 */
-    static get_ability_slot(): AbilitySlot;
+    get_ability_slot(): AbilitySlot;
     /** 获取技能蓄力百分比 */
-    static get_accumulate_ratio(): Fixed;
+    get_accumulate_ratio(): Fixed;
     /** 获取技能可以作用的角色列表 */
-    static get_affect_character_list(_height: Fixed, _use_fixed_release_point: boolean | undefined): Character[];
+    get_affect_character_list(_height: Fixed, _use_fixed_release_point: boolean | undefined): Character[];
     /** 获取技能可以作用的生物列表 */
-    static get_affect_creature_list(_height: Fixed, _use_fixed_release_point: boolean | undefined): Creature[];
+    get_affect_creature_list(_height: Fixed, _use_fixed_release_point: boolean | undefined): Creature[];
     /** 获取技能可以作用的生命体列表 */
-    static get_affect_lifeentity_list(_height: Fixed, _use_fixed_release_point: boolean | undefined): LifeEntity[];
+    get_affect_lifeentity_list(_height: Fixed, _use_fixed_release_point: boolean | undefined): LifeEntity[];
     /** 获取技能可以作用的组件列表 */
-    static get_affect_obstacle_list(_height: Fixed, _use_fixed_release_point: boolean | undefined): Obstacle[];
+    get_affect_obstacle_list(_height: Fixed, _use_fixed_release_point: boolean | undefined): Obstacle[];
     /** 获取技能的作用半径 */
-    static get_affect_radius(): Fixed;
+    get_affect_radius(): Fixed;
     /** 获取技能的作用宽度 */
-    static get_affect_width(): Fixed;
+    get_affect_width(): Fixed;
     /** 获取技能冷却时间 */
-    static get_cd_time(): Fixed;
+    get_cd_time(): Fixed;
     /** 获取技能充能时间 */
-    static get_charge_time(): Fixed;
+    get_charge_time(): Fixed;
     /** 获取技能当前使用次数 */
-    static get_cur_release_num(): number;
+    get_cur_release_num(): number;
     /** 获取技能描述 */
-    static get_desc(): string;
+    get_desc(): string;
     /** 技能是否在冷却中 */
-    static get_is_in_cd(): boolean;
+    get_is_in_cd(): boolean;
     /** 技能是否在充能中 */
-    static get_is_in_charge(): boolean;
+    get_is_in_charge(): boolean;
     /** 获取技能编号 */
-    static get_key(): AbilityKey;
+    get_key(): AbilityKey;
     /** 获取技能剩余冷却时间 */
-    static get_left_cd_time(): Fixed;
+    get_left_cd_time(): Fixed;
     /** 获取技能剩余充能时间 */
-    static get_left_charge_time(): Fixed;
+    get_left_charge_time(): Fixed;
     /** 获取技能锁定目标 */
-    static get_lock_target(): LifeEntity;
+    get_lock_target(): LifeEntity;
     /** 获取技能锁定角色 */
-    static get_lock_target_char(): Character;
+    get_lock_target_char(): Character;
     /** 获取技能锁定生物 */
-    static get_lock_target_creature(): Creature;
+    get_lock_target_creature(): Creature;
     /** 获取技能的施法距离 */
-    static get_max_release_distance(): Fixed;
+    get_max_release_distance(): Fixed;
     /** 获取技能最大使用次数 */
-    static get_max_release_num(): number;
+    get_max_release_num(): number;
     /** 获取技能名称 */
-    static get_name(): string;
+    get_name(): string;
     /** 获取技能拥有者 */
-    static get_owner(): LifeEntity;
+    get_owner(): LifeEntity;
     /** 获取技能拥有角色 */
-    static get_owner_character(): Unit;
+    get_owner_character(): Unit;
     /** 获取技能拥有生物 */
-    static get_owner_creature(): Unit;
+    get_owner_creature(): Unit;
     /** 获取拥有技能的物品 */
-    static get_owner_equipment(): Equipment;
+    get_owner_equipment(): Equipment;
     /** 获取技能拥有者 */
-    static get_owner_unit(): LifeEntity;
+    get_owner_unit(): LifeEntity;
     /** 获取技能指示器类型 */
-    static get_pointer_type(): AbilityPointerType;
+    get_pointer_type(): AbilityPointerType;
     /** 获取技能释放方向 */
-    static get_release_dir(): Vector3;
+    get_release_dir(): Vector3;
     /** 获取技能释放方向 */
-    static get_release_direction(): Vector3;
+    get_release_direction(): Vector3;
     /** 获取技能复数释放方向 */
-    static get_release_direction_list(): Vector3;
+    get_release_direction_list(): Vector3;
     /** 获取技能释放坐标点 */
-    static get_release_point(): Vector3;
+    get_release_point(): Vector3;
     /** 获取技能复数释放坐标点 */
-    static get_release_point_list(): Vector3;
+    get_release_point_list(): Vector3;
     /** 技能是否在冷却中 */
-    static is_in_cd(): boolean;
+    is_in_cd(): boolean;
     /** 技能是否在充能中 */
-    static is_in_charge(): boolean;
+    is_in_charge(): boolean;
     /** 播放倒计时ui效果 */
-    static play_countdown_ui(_time: Fixed): void;
+    play_countdown_ui(_time: Fixed): void;
     /** 技能给单位移除状态 */
-    static remove_state_to_target(_unit: Unit, _state_id: Enums.BuffState): void;
+    remove_state_to_target(_unit: Unit, _state_id: Enums.BuffState): void;
     /** 设置技能等级 */
-    static set_ability_level(_new_level: number): void;
+    set_ability_level(_new_level: number): void;
     /** 设置技能最大等级 */
-    static set_ability_max_level(_new_max_level: number): void;
+    set_ability_max_level(_new_max_level: number): void;
     /** 设置技能的作用半径 */
-    static set_affect_radius(_new_affect_radius: Fixed): void;
+    set_affect_radius(_new_affect_radius: Fixed): void;
     /** 设置技能的作用宽度 */
-    static set_affect_width(_new_affect_width: Fixed): void;
+    set_affect_width(_new_affect_width: Fixed): void;
     /** 设置技能当前使用次数 */
-    static set_cur_release_num(_release_num: number): void;
+    set_cur_release_num(_release_num: number): void;
     /** 设置技能剩余冷却 */
-    static set_left_cd_time(_cd_time: Fixed): void;
+    set_left_cd_time(_cd_time: Fixed): void;
     /** 设置技能剩余充能 */
-    static set_left_charge_time(_cd_time: Fixed): void;
+    set_left_charge_time(_cd_time: Fixed): void;
     /** 设置技能的施法距离 */
-    static set_max_release_distance(_new_max_release_distance: Fixed): void;
+    set_max_release_distance(_new_max_release_distance: Fixed): void;
     /** 设置技能最大使用次数 */
-    static set_max_release_num(_release_num_max: number): void;
+    set_max_release_num(_release_num_max: number): void;
     /** 增加技能等级 */
-    static upgrade_ability_level(_delta_level: number): void;
+    upgrade_ability_level(_delta_level: number): void;
 }
 
 declare class AbilityComp {
     /** 添加向技能槽位添加UGC技能能 */
-    static add_ability_to_slot(_ability_index: AbilitySlot, _ability_id: AbilityKey, _kv_args: any, _kv_types: any): Ability;
+    add_ability_to_slot(_ability_index: AbilitySlot, _ability_id: AbilityKey, _kv_args: any, _kv_types: any): Ability;
     /** 添加道具技能 */
-    static add_item_ability_with_check(_ability_id: AbilityKey, _kv_args: any, _kv_types: any): Ability;
+    add_item_ability_with_check(_ability_id: AbilityKey, _kv_args: any, _kv_types: any): Ability;
     /** 添加道具技能 */
-    static add_prop_ability(_ability_id: AbilityKey, _kv_args: any, _kv_types: any): Ability;
+    add_prop_ability(_ability_id: AbilityKey, _kv_args: any, _kv_types: any): Ability;
     /** 打断技能蓄力 */
-    static break_ability_accumulate(): void;
+    break_ability_accumulate(): void;
     /** 控制角色对目标方向释放指定槽位技能 */
-    static cast_ability_by_ability_slot_and_direction(_direction: Vector3, _ability_slot: AbilitySlot, _duration: Fixed): void;
+    cast_ability_by_ability_slot_and_direction(_direction: Vector3, _ability_slot: AbilitySlot, _duration: Fixed): void;
     /** 控制角色对目标坐标释放指定槽位技能 */
-    static cast_ability_by_ability_slot_and_position(_position: Vector3, _ability_slot: AbilitySlot, _duration: Fixed): void;
+    cast_ability_by_ability_slot_and_position(_position: Vector3, _ability_slot: AbilitySlot, _duration: Fixed): void;
     /** 控制角色对目标单位释放指定槽位技能 */
-    static cast_ability_by_ability_slot_and_target(_target: LifeEntity, _ability_slot: AbilitySlot, _duration: Fixed): void;
+    cast_ability_by_ability_slot_and_target(_target: LifeEntity, _ability_slot: AbilitySlot, _duration: Fixed): void;
     /** 控制角色对指定方向执行释放指定预设技能 */
-    static cast_ability_by_direction(_ability_key: AbilityKey, _duration: Fixed, _direction: Vector3, _ability_slot: number | undefined): void;
+    cast_ability_by_direction(_ability_key: AbilityKey, _duration: Fixed, _direction: Vector3, _ability_slot: number | undefined): void;
     /** 控制角色对指定坐标执行释放预设技能 */
-    static cast_ability_by_position(_ability_key: AbilityKey, _duration: Fixed, _position: Vector3, _ability_slot: number | undefined): void;
+    cast_ability_by_position(_ability_key: AbilityKey, _duration: Fixed, _position: Vector3, _ability_slot: number | undefined): void;
     /** 控制角色对指定目标执行释放指定预设技能 */
-    static cast_ability_by_target(_ability_key: AbilityKey, _duration: Fixed, _target: LifeEntity, _ability_slot: number | undefined): void;
+    cast_ability_by_target(_ability_key: AbilityKey, _duration: Fixed, _target: LifeEntity, _ability_slot: number | undefined): void;
     /** 销毁技能 */
-    static destroy_ability(_ability: Ability): boolean;
+    destroy_ability(_ability: Ability): boolean;
     /** 获取单位所有技能 */
-    static get_abilities(): Ability[];
+    get_abilities(): Ability[];
     /** 获取对应槽位技能 */
-    static get_ability_by_slot(_ability_slot: AbilitySlot): Ability;
+    get_ability_by_slot(_ability_slot: AbilitySlot): Ability;
     /** 获取单位所有技能 */
-    static get_ability_list(): Ability[];
+    get_ability_list(): Ability[];
     /** 获取道具技能 */
-    static get_prop_ability(): Ability;
+    get_prop_ability(): Ability;
     /** 打断技能施法 */
-    static interrupt_ability(): void;
+    interrupt_ability(): void;
     /** 移除槽位上的技能 */
-    static remove_ability(_ability_slot: AbilitySlot): boolean;
+    remove_ability(_ability_slot: AbilitySlot): boolean;
     /** 根据技能编号移除技能 */
-    static remove_ability_by_key(_ability_key: AbilityKey): boolean;
+    remove_ability_by_key(_ability_key: AbilityKey): boolean;
     /** 移除道具技能 */
-    static remove_prop_ability(): boolean;
+    remove_prop_ability(): boolean;
     /** 重置指定槽位技能CD */
-    static reset_ability_cd(_ability_index: AbilitySlot): void;
+    reset_ability_cd(_ability_index: AbilitySlot): void;
     /** 设置是否能在载具上使用用技能 */
-    static set_ability_enabled_on_vehicle(_enable: boolean): void;
+    set_ability_enabled_on_vehicle(_enable: boolean): void;
     /** 替换技能槽位(UGC槽位) */
-    static set_ability_to_slot(_ability: Ability, _ability_index: AbilitySlot): Ability;
+    set_ability_to_slot(_ability: Ability, _ability_index: AbilitySlot): Ability;
 }
 
 declare class Actor {
     /** 获取单位ID */
-    static get_id(): UnitID;
+    get_id(): UnitID;
 }
 
 declare class AttrComp {
     /** 改变属性的额外固定值(复杂模式) */
-    static change_attr_bonus_fixed(_key: string, _value: Fixed): void;
+    change_attr_bonus_fixed(_key: string, _value: Fixed): void;
     /** 改变属性的倍率值(复杂模式) */
-    static change_attr_ratio_fixed(_key: string, _value: Fixed): void;
+    change_attr_ratio_fixed(_key: string, _value: Fixed): void;
     /** 改变属性的基础值(复杂模式) */
-    static change_attr_raw_fixed(_key: string, _value: Fixed): void;
+    change_attr_raw_fixed(_key: string, _value: Fixed): void;
     /** 获取属性的基础加成值(复杂模式) */
-    static get_attr_base_extra_fixed(_key: string): Fixed;
+    get_attr_base_extra_fixed(_key: string): Fixed;
     /** 获取属性的额外固定值(复杂模式) */
-    static get_attr_bonus_fixed(_key: string): Fixed;
+    get_attr_bonus_fixed(_key: string): Fixed;
     /** 获取属性 */
-    static get_attr_by_type(_value_type: Enums.ValueType, _key: string): any;
+    get_attr_by_type(_value_type: Enums.ValueType, _key: string): any;
     /** 获取属性的倍率值(复杂模式) */
-    static get_attr_ratio_fixed(_key: string): Fixed;
+    get_attr_ratio_fixed(_key: string): Fixed;
     /** 获取属性的基础值(复杂模式) */
-    static get_attr_raw_fixed(_key: string): Fixed;
+    get_attr_raw_fixed(_key: string): Fixed;
     /** 设置属性的额外固定值(复杂模式) */
-    static set_attr_bonus_fixed(_key: string, _value: Fixed): void;
+    set_attr_bonus_fixed(_key: string, _value: Fixed): void;
     /** 设置属性 */
-    static set_attr_by_type(_value_type: Enums.ValueType, _key: string, _val: any): void;
+    set_attr_by_type(_value_type: Enums.ValueType, _key: string, _val: any): void;
     /** 设置属性的倍率值(复杂模式) */
-    static set_attr_ratio_fixed(_key: string, _value: Fixed): void;
+    set_attr_ratio_fixed(_key: string, _value: Fixed): void;
     /** 设置属性的基础值(复杂模式) */
-    static set_attr_raw_fixed(_key: string, _value: Fixed): void;
+    set_attr_raw_fixed(_key: string, _value: Fixed): void;
 }
 
 declare class BuffStateComp {
     /** 添加状态 */
-    static add_state(_state_id: Enums.BuffState): void;
+    add_state(_state_id: Enums.BuffState): void;
     /** 清除状态 */
-    static clear_state(_state_id: Enums.BuffState): void;
+    clear_state(_state_id: Enums.BuffState): void;
     /** 获取限制状态计数 */
-    static get_state_count(_state_id: Enums.BuffState): number;
+    get_state_count(_state_id: Enums.BuffState): number;
     /** 获取所有限制状态 */
-    static get_state_list(): Enums.BuffState[];
+    get_state_list(): Enums.BuffState[];
     /** 移除状态 */
-    static remove_state(_state_id: Enums.BuffState): void;
+    remove_state(_state_id: Enums.BuffState): void;
 }
 
 declare class Camp {
     /** 改变阵营积分 */
-    static change_camp_score(_add_score: number): void;
+    change_camp_score(_add_score: number): void;
     /** 获取阵营内玩家列表 */
-    static get_camp_role_list(): Role[];
+    get_camp_role_list(): Role[];
     /** 获取阵营积分 */
-    static get_camp_score(): number;
+    get_camp_score(): number;
     /** 获取阵营名称 */
-    static get_name(): string;
+    get_name(): string;
     /** 获取阵营内玩家列表 */
-    static get_roles(): Role[];
+    get_roles(): Role[];
     /** 设置阵营积分 */
-    static set_camp_score(_score: number): void;
+    set_camp_score(_score: number): void;
 }
 
 declare class Character {
     /** 改变角色预设 */
-    static change_character_prefab(_c_key: CharacterKey, _reset_prop: boolean, _reset_trigger_system: boolean, _reset_model: boolean): void;
+    change_character_prefab(_c_key: CharacterKey, _reset_prop: boolean, _reset_trigger_system: boolean, _reset_model: boolean): void;
     /** 根据生物设置模型 */
-    static change_model_by_creature(_creature: Creature, _include_custom_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
+    change_model_by_creature(_creature: Creature, _include_custom_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
     /** 命令角色抓举 */
-    static cmd_lift(): void;
+    cmd_lift(): void;
     /** 命令角色移动到坐标点 */
-    static cmd_move_to_pos(_target_pos: Vector3, _duration: Fixed): void;
+    cmd_move_to_pos(_target_pos: Vector3, _duration: Fixed): void;
     /** 命令角色前扑 */
-    static cmd_rush(): void;
+    cmd_rush(): void;
     /** 销毁效果 */
-    static destroy_buff(_modifier: Modifier): void;
+    destroy_buff(_modifier: Modifier): void;
     /** 开关角色靶向移动 */
-    static enable_aim_move_mode(_enable: boolean): void;
+    enable_aim_move_mode(_enable: boolean): void;
     /** 命令角色前扑 */
-    static fling_rush(): void;
+    fling_rush(): void;
     /** 获取技能点 */
-    static get_ability_point(): number;
+    get_ability_point(): number;
     /** 获取单位效果 */
-    static get_buff(_modifier_id: ModifierKey): Modifier;
+    get_buff(_modifier_id: ModifierKey): Modifier;
     /** 获取单位所有效果 */
-    static get_buffs(): Modifier[];
+    get_buffs(): Modifier[];
     /** 获取控制角色的玩家 */
-    static get_camp_role(): Role;
+    get_camp_role(): Role;
     /** 获取控制角色的玩家 */
-    static get_ctrl_role(): Role;
+    get_ctrl_role(): Role;
     /** 获取朝向 */
-    static get_face_dir(): Vector3;
+    get_face_dir(): Vector3;
     /** 增加技能点 */
-    static increase_ability_point(_increase: number): void;
+    increase_ability_point(_increase: number): void;
     /** 是否正在强制位移 */
-    static is_forced_moving(): boolean;
+    is_forced_moving(): boolean;
     /** 生命体是否进入魂蛋模式 */
-    static is_ghost_mode(): boolean;
+    is_ghost_mode(): boolean;
     /** 是否拥有指定编号的效果 */
-    static is_have_buff_with_id(_modifier_key: ModifierKey): boolean;
+    is_have_buff_with_id(_modifier_key: ModifierKey): boolean;
     /** 命令角色跳跃 */
-    static jump(): void;
+    jump(): void;
     /** 命令角色抓举 */
-    static lift(): void;
+    lift(): void;
     /** 还原模型变化 */
-    static recover_model(): void;
+    recover_model(): void;
     /** 还原角色指定外观部位变化 */
-    static recover_target_socket_model(_model_socket: Enums.ModelSocket): void;
+    recover_target_socket_model(_model_socket: Enums.ModelSocket): void;
     /** 移除效果 */
-    static remove_buff(_modifier_id: ModifierKey): void;
+    remove_buff(_modifier_id: ModifierKey): void;
     /** 还原角色指定外观部位变化 */
-    static reset_target_socket_model(_model_socket: Enums.ModelSocket): void;
+    reset_target_socket_model(_model_socket: Enums.ModelSocket): void;
     /** 开关角色靶向移动 */
-    static set_aim_move_enabled(_enable: boolean): void;
+    set_aim_move_enabled(_enable: boolean): void;
     /** 开关角色靶向移动 */
-    static set_aim_move_mode(_enable: boolean): void;
+    set_aim_move_mode(_enable: boolean): void;
     /** 设置角色配音是否生效 */
-    static set_character_act_voice_enabled(_enabled: boolean): void;
+    set_character_act_voice_enabled(_enabled: boolean): void;
     /** 改变角色预设 */
-    static set_character_prefab(_c_key: CharacterKey, _reset_prop: boolean, _reset_trigger_system: boolean, _reset_model: boolean): void;
+    set_character_prefab(_c_key: CharacterKey, _reset_prop: boolean, _reset_trigger_system: boolean, _reset_model: boolean): void;
     /** 设置质量条是否显示 */
-    static set_mass_bar_visible(_visible: boolean): void;
+    set_mass_bar_visible(_visible: boolean): void;
     /** 设置角色配音是否生效 */
-    static set_voice_enabled(_enabled: boolean): void;
+    set_voice_enabled(_enabled: boolean): void;
     /** 开始强制位移 */
-    static start_forced_move(_vel: Vector3, _duration: Fixed, _enable_phy: boolean | undefined): void;
+    start_forced_move(_vel: Vector3, _duration: Fixed, _enable_phy: boolean | undefined): void;
     /** 命令角色移动到坐标点 */
-    static start_move_to_pos(_target_pos: Vector3, _duration: Fixed): void;
+    start_move_to_pos(_target_pos: Vector3, _duration: Fixed): void;
     /** 退出当前强制位移 */
-    static stop_forced_move(): void;
+    stop_forced_move(): void;
     /** 生命体尝试下载具 */
-    static try_exit_ugcvehicle(): void;
+    try_exit_ugcvehicle(): void;
     /** 生命体尝试下载具 */
-    static try_exit_vehicle(): void;
+    try_exit_vehicle(): void;
 }
 
 declare class CharacterComp {
     /** 获取缩放倍率 */
-    static get_scale_ratio(): Fixed;
+    get_scale_ratio(): Fixed;
     /** 是否正在强制位移 */
-    static is_forced_moving(): boolean;
+    is_forced_moving(): boolean;
     /** 设置朝向 */
-    static set_face_dir(_face_dir: Vector3): void;
+    set_face_dir(_face_dir: Vector3): void;
     /** 开始强制位移 */
-    static start_forced_move(_vel: Vector3, _duration: Fixed, _enable_phy: boolean | undefined): void;
+    start_forced_move(_vel: Vector3, _duration: Fixed, _enable_phy: boolean | undefined): void;
     /** 退出当前强制位移 */
-    static stop_forced_move(): void;
+    stop_forced_move(): void;
 }
 
 declare class Creature {
     /** 根据生物设置模型 */
-    static change_model_by_creature(_creature: Creature, _include_custom_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
+    change_model_by_creature(_creature: Creature, _include_custom_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
     /** 命令生物移动 */
-    static force_start_move(_direction: Vector3, _t: Fixed): void;
+    force_start_move(_direction: Vector3, _t: Fixed): void;
     /** 命令生物停止移动 */
-    static force_stop_move(): void;
+    force_stop_move(): void;
     /** 获取朝向 */
-    static get_face_dir(): Vector3;
+    get_face_dir(): Vector3;
     /** 获取生命体是否可拖动 */
-    static is_drag_enable(): boolean;
+    is_drag_enable(): boolean;
     /** 获取生命体是否可点击 */
-    static is_touch_enable(): boolean;
+    is_touch_enable(): boolean;
     /** 还原模型变化 */
-    static recover_model(): void;
+    recover_model(): void;
     /** 还原生物指定外观部位变化 */
-    static recover_target_socket_model(_model_socket: Enums.ModelSocket): void;
+    recover_target_socket_model(_model_socket: Enums.ModelSocket): void;
     /** 还原生物指定外观部位变化 */
-    static reset_target_socket_model(_model_socket: Enums.ModelSocket): void;
+    reset_target_socket_model(_model_socket: Enums.ModelSocket): void;
     /** 设置生物是否可拖动 */
-    static set_drag_enable(_enable: boolean): void;
+    set_drag_enable(_enable: boolean): void;
     /** 设置生物是否可拖动 */
-    static set_draggable(_enable: boolean): void;
+    set_draggable(_enable: boolean): void;
     /** 设置质量条是否显示 */
-    static set_mass_bar_visible(_visible: boolean): void;
+    set_mass_bar_visible(_visible: boolean): void;
     /** 设置生物的显示名称 */
-    static set_name(_name: string): void;
+    set_name(_name: string): void;
     /** 设置生物是否显示名称 */
-    static set_name_visible(_visible: boolean): void;
+    set_name_visible(_visible: boolean): void;
     /** 设置生物是否可点击 */
-    static set_touch_enable(_enable: boolean): void;
+    set_touch_enable(_enable: boolean): void;
     /** 设置生物是否可点击 */
-    static set_touchable(_enable: boolean): void;
+    set_touchable(_enable: boolean): void;
 }
 
 declare class CustomTriggerSpace {
     /** 获取触发区域内的随机坐标 */
-    static random_point(): Vector3;
+    random_point(): Vector3;
 }
 
 declare class DisplayComp {
     /** 添加绑定模型 */
-    static bind_model(_model_id: UnitKey, _socket: Enums.ModelSocket, _offset: Vector3, _rot: Quaternion, _scale: Vector3): string;
+    bind_model(_model_id: UnitKey, _socket: Enums.ModelSocket, _offset: Vector3, _rot: Quaternion, _scale: Vector3): string;
     /** 添加绑定模型 */
-    static bind_model_by_unit(_unit: Unit, _socket: Enums.ModelSocket, _offset: Vector3, _rot: Quaternion): string;
+    bind_model_by_unit(_unit: Unit, _socket: Enums.ModelSocket, _offset: Vector3, _rot: Quaternion): string;
     /** 播放全身动画 */
-    static play_body_anim_by_id(_anim_id: AnimKey, _start_time: Fixed, _play_time: Fixed, _is_loop: boolean | undefined): void;
+    play_body_anim_by_id(_anim_id: AnimKey, _start_time: Fixed, _play_time: Fixed, _is_loop: boolean | undefined): void;
     /** 播放上半身动画 */
-    static play_upper_anim_by_id(_anim_id: AnimKey, _start_time: Fixed, _play_time: Fixed, _is_loop: boolean | undefined): void;
+    play_upper_anim_by_id(_anim_id: AnimKey, _start_time: Fixed, _play_time: Fixed, _is_loop: boolean | undefined): void;
     /** 移除绑定模型 */
-    static remove_bind_model(_bind_id: string): void;
+    remove_bind_model(_bind_id: string): void;
     /** 设置播放速率 */
-    static set_anim_rate(_anim_rate: Fixed): void;
+    set_anim_rate(_anim_rate: Fixed): void;
     /** 停止播放动画 */
-    static stop_anim(): void;
+    stop_anim(): void;
     /** 停止播放全身动画 */
-    static stop_play_body_anim(): void;
+    stop_play_body_anim(): void;
     /** 停止播放全身动画） */
-    static stop_play_body_anim_by_id(_anim_id: AnimKey): void;
+    stop_play_body_anim_by_id(_anim_id: AnimKey): void;
     /** 停止播放全身动画） */
-    static stop_play_body_anim_with_id(_anim_id: AnimKey): void;
+    stop_play_body_anim_with_id(_anim_id: AnimKey): void;
     /** 停止播放上半身动画 */
-    static stop_play_upper_anim(): void;
+    stop_play_upper_anim(): void;
     /** 停止播放上半身动画 */
-    static stop_play_upper_anim_by_id(_anim_id: AnimKey): void;
+    stop_play_upper_anim_by_id(_anim_id: AnimKey): void;
     /** 停止播放上半身动画 */
-    static stop_play_upper_anim_with_id(_anim_id: AnimKey): void;
+    stop_play_upper_anim_with_id(_anim_id: AnimKey): void;
     /** 添加绑定模型 */
-    static ugc_add_bind_model(_model_id: UnitKey, _socket: Enums.ModelSocket, _offset: Vector3, _rot: Quaternion, _scale: Vector3): string;
+    ugc_add_bind_model(_model_id: UnitKey, _socket: Enums.ModelSocket, _offset: Vector3, _rot: Quaternion, _scale: Vector3): string;
     /** 移除绑定模型 */
-    static unbind_model(_bind_id: string): void;
+    unbind_model(_bind_id: string): void;
 }
 
 declare class Equipment {
     /** 获取物品能否丢弃 */
-    static can_drop(): boolean;
+    can_drop(): boolean;
     /** 增加/减少物品当前堆叠数 */
-    static change_current_stack_size(_num: number): void;
+    change_current_stack_size(_num: number): void;
     /** 增加/减少物品最大堆叠数 */
-    static change_max_stack_size(_num: number): void;
+    change_max_stack_size(_num: number): void;
     /** 删除物品 */
-    static destroy_equipment(): void;
+    destroy_equipment(): void;
     /** 物品被丢弃 */
-    static drop(): void;
+    drop(): void;
     /** 获取物品当前堆叠层数 */
-    static get_current_stack_num(): number;
+    get_current_stack_num(): number;
     /** 获取物品描述 */
-    static get_desc(): string;
+    get_desc(): string;
     /** 获取物品的抵押价格 */
-    static get_economic_value(_res_type: string): number;
+    get_economic_value(_res_type: string): number;
     /** 获取物品所在槽位 */
-    static get_equipment_slot(): EquipmentSlot;
+    get_equipment_slot(): EquipmentSlot;
     /** 获取物品的物品类型 */
-    static get_equipment_type(): Enums.EquipmentType;
+    get_equipment_type(): Enums.EquipmentType;
     /** 获取物品的物品编号 */
-    static get_key(): EquipmentKey;
+    get_key(): EquipmentKey;
     /** 获取物品最大堆叠层数 */
-    static get_max_stack_num(): number;
+    get_max_stack_num(): number;
     /** 获取物品名称 */
-    static get_name(): string;
+    get_name(): string;
     /** 获取持有物品的角色 */
-    static get_owner_character(): Character;
+    get_owner_character(): Character;
     /** 获取持有物品的生物 */
-    static get_owner_creature(): Creature;
+    get_owner_creature(): Creature;
     /** 获取物品位置 */
-    static get_position(): Vector3;
+    get_position(): Vector3;
     /** 获取物品的抵押价格 */
-    static get_price(_res_type: string): number;
+    get_price(_res_type: string): number;
     /** 获取物品所在槽位类型 */
-    static get_slot_type(): Enums.EquipmentSlotType;
+    get_slot_type(): Enums.EquipmentSlotType;
     /** 获取物品单位 */
-    static get_unit(): Obstacle;
+    get_unit(): Obstacle;
     /** 物品是否被持有 */
-    static has_owner(): boolean;
+    has_owner(): boolean;
     /** 获取物品是否自动拾取 */
-    static is_auto_picking(): boolean;
+    is_auto_picking(): boolean;
     /** 获取物品是否自动使用 */
-    static is_auto_using(): boolean;
+    is_auto_using(): boolean;
     /** 移动物品到指定槽位 */
-    static move_to_slot(_slot_type: Enums.EquipmentSlotType, _slot: number): void;
+    move_to_slot(_slot_type: Enums.EquipmentSlotType, _slot: number): void;
     /** 设置枪械自动瞄准 */
-    static set_auto_aim(_is_auto_aim: boolean): void;
+    set_auto_aim(_is_auto_aim: boolean): void;
     /** 设置枪械自动瞄准 */
-    static set_auto_aim_enabled(_is_auto_aim: boolean): void;
+    set_auto_aim_enabled(_is_auto_aim: boolean): void;
     /** 设置枪械自动开火 */
-    static set_auto_fire(_is_auto_fire: boolean): void;
+    set_auto_fire(_is_auto_fire: boolean): void;
     /** 设置枪械自动开火 */
-    static set_auto_fire_enabled(_is_auto_fire: boolean): void;
+    set_auto_fire_enabled(_is_auto_fire: boolean): void;
     /** 设置物品充能无消耗 */
-    static set_charge_cost_free(_is_free: boolean): void;
+    set_charge_cost_free(_is_free: boolean): void;
     /** 设置物品当前堆叠数 */
-    static set_current_stack_num(_num: number): void;
+    set_current_stack_num(_num: number): void;
     /** 设置物品的描述 */
-    static set_desc(_desc: string): void;
+    set_desc(_desc: string): void;
     /** 设置物品能否丢弃 */
-    static set_droppable(_droppable: boolean): void;
+    set_droppable(_droppable: boolean): void;
     /** 设置物品的抵押价格 */
-    static set_economic_value(_res_type: string, _price: number): void;
+    set_economic_value(_res_type: string, _price: number): void;
     /** 设置物品的图标 */
-    static set_icon(_icon_key: ImageKey): void;
+    set_icon(_icon_key: ImageKey): void;
     /** 设置物品最大堆叠数 */
-    static set_max_stack_num(_num: number): void;
+    set_max_stack_num(_num: number): void;
     /** 设置物品的名称 */
-    static set_name(_name: string): void;
+    set_name(_name: string): void;
     /** 设置物品的抵押价格 */
-    static set_price(_res_type: string, _price: number): void;
+    set_price(_res_type: string, _price: number): void;
     /** 设置物品能否出售 */
-    static set_saleable(_saleable: boolean): void;
+    set_saleable(_saleable: boolean): void;
     /** 设置物品能否使用 */
-    static set_usable(_usable: boolean): void;
+    set_usable(_usable: boolean): void;
     /** 使物品开始充能 */
-    static start_charge(): void;
+    start_charge(): void;
 }
 
 declare class EquipmentComp {
     /** 清除单位物品格选中状态 */
-    static clear_selected_equipment_slot(): void;
+    clear_selected_equipment_slot(): void;
     /** 消耗物品 */
-    static consume_equipment(_equipment_key: EquipmentKey, _consume_num: number): void;
+    consume_equipment(_equipment_key: EquipmentKey, _consume_num: number): void;
     /** 创建物品到指定类型槽位 */
-    static create_equipment_to_slot(_key: EquipmentKey, _slot_type: Enums.EquipmentSlotType): Equipment;
+    create_equipment_to_slot(_key: EquipmentKey, _slot_type: Enums.EquipmentSlotType): Equipment;
     /** 获取身上的物品 */
-    static get_equipment_by_slot(_slot_type: Enums.EquipmentSlotType, _slot_index: number): Equipment;
+    get_equipment_by_slot(_slot_type: Enums.EquipmentSlotType, _slot_index: number): Equipment;
     /** 获取角色/生物持有的物品预设列表 */
-    static get_equipment_list(_equipment_key: EquipmentKey, _exclude_equipped: boolean | undefined, _exclude_bag: boolean | undefined): Equipment[];
+    get_equipment_list(_equipment_key: EquipmentKey, _exclude_equipped: boolean | undefined, _exclude_bag: boolean | undefined): Equipment[];
     /** 获取持有的物品列表 */
-    static get_equipment_list_by_slot(_slot_type: Enums.EquipmentSlotType): Equipment[];
+    get_equipment_list_by_slot(_slot_type: Enums.EquipmentSlotType): Equipment[];
     /** 获取持有的物品列表 */
-    static get_equipment_list_by_slot_type(_slot_type: Enums.EquipmentSlotType): Equipment[];
+    get_equipment_list_by_slot_type(_slot_type: Enums.EquipmentSlotType): Equipment[];
     /** 获取最大可持有的物品数量 */
-    static get_equipment_max_count(_slot_type: Enums.EquipmentSlotType): number;
+    get_equipment_max_count(_slot_type: Enums.EquipmentSlotType): number;
     /** 获取最大可持有的物品数量 */
-    static get_equipment_max_num_by_slot(_slot_type: Enums.EquipmentSlotType): number;
+    get_equipment_max_num_by_slot(_slot_type: Enums.EquipmentSlotType): number;
     /** 获取当前选中的物品 */
-    static get_selected_equipment(): Equipment;
+    get_selected_equipment(): Equipment;
     /** 设置单位选中物品格 */
-    static select_equipment_slot(_slot_type: Enums.EquipmentSlotType, _slot_index: number): void;
+    select_equipment_slot(_slot_type: Enums.EquipmentSlotType, _slot_index: number): void;
     /** 修改最大可持有的物品数量 */
-    static set_equipment_max_count(_slot_type: Enums.EquipmentSlotType, _slot_num: number): void;
+    set_equipment_max_count(_slot_type: Enums.EquipmentSlotType, _slot_num: number): void;
     /** 设置单位选中物品格 */
-    static set_selected_equipment_slot(_slot_type: Enums.EquipmentSlotType, _slot_index: number): void;
+    set_selected_equipment_slot(_slot_type: Enums.EquipmentSlotType, _slot_index: number): void;
 }
 
 declare class ExprDeviceComp {
     /** 通过名称禁用表现器 */
-    static disable_expr_device_by_name(_name: string): void;
+    disable_expr_device_by_name(_name: string): void;
     /** 通过名称激活表现器 */
-    static enable_expr_device_by_name(_name: string): void;
+    enable_expr_device_by_name(_name: string): void;
 }
 
 declare class GameAPI {
@@ -2241,319 +2241,319 @@ declare class GameAPI {
 
 declare class ItemBox {
     /** 添加道具箱刷新技能 */
-    static add_ability(_ability_key: AbilityKey, _weight: number): void;
+    add_ability(_ability_key: AbilityKey, _weight: number): void;
     /** 添加物品箱刷新预设 */
-    static add_equipment(_key: EquipmentKey, _weight: number): void;
+    add_equipment(_key: EquipmentKey, _weight: number): void;
     /** 移除道具箱刷新技能 */
-    static remove_ability(_ability_key: AbilityKey): void;
+    remove_ability(_ability_key: AbilityKey): void;
     /** 移除物品箱刷新预设 */
-    static remove_equipment(_key: EquipmentKey): void;
+    remove_equipment(_key: EquipmentKey): void;
 }
 
 declare class JointAssistantComp {
     /** 获取关节组件主体 */
-    static get_joint_assistant_object1_obstacle(): Character;
+    get_joint_assistant_object1_obstacle(): Character;
     /** 获取关节组件目标 */
-    static get_joint_assistant_object2_obstacle(): Character;
+    get_joint_assistant_object2_obstacle(): Character;
     /** 获取关节组件主体 */
-    static get_joint_assistant_primary_obstacle(): Character;
+    get_joint_assistant_primary_obstacle(): Character;
     /** 获取关节组件目标 */
-    static get_joint_assistant_target_obstacle(): Character;
+    get_joint_assistant_target_obstacle(): Character;
     /** 获取关节组件类型 */
-    static get_joint_assistant_type(): JointAssistantType;
+    get_joint_assistant_type(): JointAssistantType;
     /** 设置关节组件的启用状态 */
-    static set_joint_assistant_enabled(_enable: boolean): void;
+    set_joint_assistant_enabled(_enable: boolean): void;
     /** 设置关节组件可见性 */
-    static set_joint_assistant_visible(_visible: boolean): void;
+    set_joint_assistant_visible(_visible: boolean): void;
 }
 
 declare class JumpComp {
     /** 获取多段跳剩余冷却 */
-    static get_multi_jump_current_cooldown(): Fixed;
+    get_multi_jump_current_cooldown(): Fixed;
     /** 获取多段跳剩余冷却 */
-    static get_multi_jump_remaining_cooldown(): Fixed;
+    get_multi_jump_remaining_cooldown(): Fixed;
     /** 是否位于地面 */
-    static is_on_ground(): boolean;
+    is_on_ground(): boolean;
     /** 设置多段跳剩余冷却 */
-    static set_multi_jump_current_cooldown(_cd: Fixed): void;
+    set_multi_jump_current_cooldown(_cd: Fixed): void;
     /** 设置多段跳剩余冷却 */
-    static set_multi_jump_remaining_cooldown(_cd: Fixed): void;
+    set_multi_jump_remaining_cooldown(_cd: Fixed): void;
 }
 
 declare class KVBase {
     /** 添加标签 */
-    static add_tag(_tag: string): void;
+    add_tag(_tag: string): void;
     /** 清空自定义值 */
-    static clear_kv(): void;
+    clear_kv(): void;
     /** 清空标签 */
-    static clear_tag(): void;
+    clear_tag(): void;
     /** 移除标签 */
-    static delete_tag(_tag: string): void;
+    delete_tag(_tag: string): void;
     /** 获取公告板文本内容 */
-    static get_billboard_content(): string;
+    get_billboard_content(): string;
     /** 获取公告板文本字体大小 */
-    static get_billboard_font_size(): number;
+    get_billboard_font_size(): number;
     /** 获取自定义值 */
-    static get_kv_by_type(_value_type: Enums.ValueType, _key: string): any;
+    get_kv_by_type(_value_type: Enums.ValueType, _key: string): any;
     /** 是否有自定义值 */
-    static has_kv(_key: string): boolean;
+    has_kv(_key: string): boolean;
     /** 是否含有标签 */
-    static has_tag(_tag: string): boolean;
+    has_tag(_tag: string): boolean;
     /** 移除自定义值 */
-    static remove_kv(_key: string): void;
+    remove_kv(_key: string): void;
     /** 移除标签 */
-    static remove_tag(_tag: string): void;
+    remove_tag(_tag: string): void;
     /** 设置公告板文本内容 */
-    static set_billboard_content(_content: string): void;
+    set_billboard_content(_content: string): void;
     /** 设置公告板文本颜色 */
-    static set_billboard_font_color(_color: Color, _gradient_color_1: number | undefined, _gradient_color_2: number | undefined, _gradient_color_3: number | undefined, _gradient_color_4: number | undefined): void;
+    set_billboard_font_color(_color: Color, _gradient_color_1: number | undefined, _gradient_color_2: number | undefined, _gradient_color_3: number | undefined, _gradient_color_4: number | undefined): void;
     /** 设置公告板文本字体大小 */
-    static set_billboard_font_size(_font_size: number): void;
+    set_billboard_font_size(_font_size: number): void;
     /** 设置公告板文本颜色 */
-    static set_billboard_text_color(_color: Color, _gradient_color_1: number | undefined, _gradient_color_2: number | undefined, _gradient_color_3: number | undefined, _gradient_color_4: number | undefined): void;
+    set_billboard_text_color(_color: Color, _gradient_color_1: number | undefined, _gradient_color_2: number | undefined, _gradient_color_3: number | undefined, _gradient_color_4: number | undefined): void;
     /** 设置自定义值 */
-    static set_kv_by_type(_value_type: Enums.ValueType, _key: string, _val: any): void;
+    set_kv_by_type(_value_type: Enums.ValueType, _key: string, _val: any): void;
     /** 添加标签 */
-    static set_tag(_tag: string): void;
+    set_tag(_tag: string): void;
 }
 
 declare class LevelComp {
     /** 获得经验 */
-    static gain_exp(_killed_exp: Fixed): void;
+    gain_exp(_killed_exp: Fixed): void;
     /** 获取当前经验值 */
-    static get_exp(): Fixed;
+    get_exp(): Fixed;
     /** 获取击杀经验点 */
-    static get_killed_exp(): Fixed;
+    get_killed_exp(): Fixed;
     /** 获得当前等级 */
-    static get_level(): number;
+    get_level(): number;
     /** 升级 */
-    static level_up(): void;
+    level_up(): void;
     /** 设置击杀经验点 */
-    static set_killed_exp(_killed_exp: Fixed): void;
+    set_killed_exp(_killed_exp: Fixed): void;
 }
 
 declare class LifeComp {
     /** 生物是否可以复活 */
-    static can_reborn(): boolean;
+    can_reborn(): boolean;
     /** 改变健康值 */
-    static change_hp(_value: Fixed): void;
+    change_hp(_value: Fixed): void;
     /** 使生物死亡 */
-    static die(_dmg_unit: Unit | undefined): void;
+    die(_dmg_unit: Unit | undefined): void;
     /** 获取健康值 */
-    static get_hp(): Fixed;
+    get_hp(): Fixed;
     /** 获取最大健康值 */
-    static get_hp_max(): Fixed;
+    get_hp_max(): Fixed;
     /** 获取当前命数 */
-    static get_life(): number;
+    get_life(): number;
     /** 获取最大命数 */
-    static get_life_max(): number;
+    get_life_max(): number;
     /** 是否处于死亡状态 */
-    static is_die_status(): boolean;
+    is_die_status(): boolean;
     /** 是否无限复活 */
-    static is_infinite_reborn(): boolean;
+    is_infinite_reborn(): boolean;
     /** 使生物复活 */
-    static reborn(_immediate: boolean | undefined): void;
+    reborn(_immediate: boolean | undefined): void;
     /** 设置自动复活 */
-    static set_auto_reborn(_auto_reborn: boolean): void;
+    set_auto_reborn(_auto_reborn: boolean): void;
     /** 设置自动复活 */
-    static set_auto_reborn_enable(_auto_reborn: boolean): void;
+    set_auto_reborn_enable(_auto_reborn: boolean): void;
     /** 设置自动复活 */
-    static set_auto_reborn_enabled(_auto_reborn: boolean): void;
+    set_auto_reborn_enabled(_auto_reborn: boolean): void;
     /** 设置最大健康值 */
-    static set_hp_max(_value: Fixed): void;
+    set_hp_max(_value: Fixed): void;
     /** 设置无限复活 */
-    static set_infinite_reborn(_enable_reborn: boolean): void;
+    set_infinite_reborn(_enable_reborn: boolean): void;
     /** 设置无限复活 */
-    static set_infinite_reborn_enable(_enable_reborn: boolean): void;
+    set_infinite_reborn_enable(_enable_reborn: boolean): void;
     /** 设置无限复活 */
-    static set_infinite_reborn_enabled(_enable_reborn: boolean): void;
+    set_infinite_reborn_enabled(_enable_reborn: boolean): void;
     /** 改变当前命数 */
-    static set_life(_value: number): void;
+    set_life(_value: number): void;
     /** 改变当前命数 */
-    static set_life_count(_value: number): void;
+    set_life_count(_value: number): void;
     /** 改变最大命数 */
-    static set_life_max(_value: number): void;
+    set_life_max(_value: number): void;
     /** 设置是否原地复活 */
-    static set_reborn_in_place(_reborn_in_place: boolean, _reset_camera: boolean): void;
+    set_reborn_in_place(_reborn_in_place: boolean, _reset_camera: boolean): void;
     /** 设置复活时间 */
-    static set_reborn_time(_reborn_time: Fixed): void;
+    set_reborn_time(_reborn_time: Fixed): void;
 }
 
 declare class LifeEntity {
     /** 控制AI执行警戒命令 */
-    static ai_command_alert(_tagert_pos: Vector3, _target_dir: Vector3, _dalay_time: Fixed, _reject_time: Fixed, _move_mode: Enums.MoveMode): void;
+    ai_command_alert(_tagert_pos: Vector3, _target_dir: Vector3, _dalay_time: Fixed, _reject_time: Fixed, _move_mode: Enums.MoveMode): void;
     /** 控制AI执行追击行为(技能) */
-    static ai_command_chase_with_ability(_target: LifeEntity, _chase_range: Fixed, _reject_time: Fixed, _action_distance: Fixed, _ability_key: AbilityKey, _move_mode: Enums.MoveMode, _action_count: number): void;
+    ai_command_chase_with_ability(_target: LifeEntity, _chase_range: Fixed, _reject_time: Fixed, _action_distance: Fixed, _ability_key: AbilityKey, _move_mode: Enums.MoveMode, _action_count: number): void;
     /** 控制AI执行追击行为(命令) */
-    static ai_command_chase_with_action(_target: LifeEntity, _chase_range: Fixed, _reject_time: Fixed, _action_distance: Fixed, _action_mode: Enums.AIBasicCommand, _move_mode: Enums.MoveMode, _action_count: number): void;
+    ai_command_chase_with_action(_target: LifeEntity, _chase_range: Fixed, _reject_time: Fixed, _action_distance: Fixed, _action_mode: Enums.AIBasicCommand, _move_mode: Enums.MoveMode, _action_count: number): void;
     /** 控制AI执行追击行为(物品) */
-    static ai_command_chase_with_equipment(_target: LifeEntity, _chase_range: Fixed, _reject_time: Fixed, _action_distance: Fixed, _equipment_key: EquipmentKey, _move_mode: Enums.MoveMode, _action_count: number): void;
+    ai_command_chase_with_equipment(_target: LifeEntity, _chase_range: Fixed, _reject_time: Fixed, _action_distance: Fixed, _equipment_key: EquipmentKey, _move_mode: Enums.MoveMode, _action_count: number): void;
     /** 控制AI执行跟随命令 */
-    static ai_command_follow(_target_unit: Character, _follow_dis: Fixed, _tolerate_dis: Fixed, _reject_time: Fixed, _move_mode: Enums.MoveMode): void;
+    ai_command_follow(_target_unit: Character, _follow_dis: Fixed, _tolerate_dis: Fixed, _reject_time: Fixed, _move_mode: Enums.MoveMode): void;
     /** 控制AI执行模仿命令 */
-    static ai_command_imitate(_target_unit: Character, _delay: Fixed, _disable_actions: Enums.AIBasicCommand[]): void;
+    ai_command_imitate(_target_unit: Character, _delay: Fixed, _disable_actions: Enums.AIBasicCommand[]): void;
     /** 控制AI跳跃 */
-    static ai_command_jump(): void;
+    ai_command_jump(): void;
     /** 控制AI举起/扔下/投掷 */
-    static ai_command_lift(): void;
+    ai_command_lift(): void;
     /** 控制AI执行巡逻命令 */
-    static ai_command_nav(_waypoint: Vector3, _reject_time: Fixed, _round_mode: Enums.PatrolType, _move_mode: Enums.MoveMode): void;
+    ai_command_nav(_waypoint: Vector3, _reject_time: Fixed, _round_mode: Enums.PatrolType, _move_mode: Enums.MoveMode): void;
     /** 控制AI执行巡逻命令 */
-    static ai_command_patrol(_waypoint: Vector3, _reject_time: Fixed, _round_mode: Enums.PatrolType, _move_mode: Enums.MoveMode): void;
+    ai_command_patrol(_waypoint: Vector3, _reject_time: Fixed, _round_mode: Enums.PatrolType, _move_mode: Enums.MoveMode): void;
     /** 控制AI拾取物品 */
-    static ai_command_pick_up_equipment(_target_equipment: Equipment, _move_mode: Enums.MoveMode, _reject_time: Fixed): void;
+    ai_command_pick_up_equipment(_target_equipment: Equipment, _move_mode: Enums.MoveMode, _reject_time: Fixed): void;
     /** 控制AI滚动 */
-    static ai_command_roll(): void;
+    ai_command_roll(): void;
     /** 控制AI前扑 */
-    static ai_command_rush(): void;
+    ai_command_rush(): void;
     /** 控制AI单位移动 */
-    static ai_command_start_move(_direction: Vector3, _t: Fixed): void;
+    ai_command_start_move(_direction: Vector3, _t: Fixed): void;
     /** 控制AI执行高优先级寻路命令 */
-    static ai_command_start_move_high_priority(_target_position: Vector3, _duration: Fixed, _threshold: Fixed): void;
+    ai_command_start_move_high_priority(_target_position: Vector3, _duration: Fixed, _threshold: Fixed): void;
     /** 控制AI单位停止移动 */
-    static ai_command_stop_move(_duration: Fixed): void;
+    ai_command_stop_move(_duration: Fixed): void;
     /** 根据角色设置模型 */
-    static change_model_by_character(_character: Character, _include_ugc_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
+    change_model_by_character(_character: Character, _include_ugc_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
     /** 根据生物设置模型 */
-    static change_model_by_creature(_creature: Creature, _include_custom_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
+    change_model_by_creature(_creature: Creature, _include_custom_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
     /** 根据生物预设设置模型 */
-    static change_model_by_creature_key(_creature_key: CreatureKey, _include_custom_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
+    change_model_by_creature_key(_creature_key: CreatureKey, _include_custom_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
     /** 获取朝向 */
-    static get_direction(): Vector3;
+    get_direction(): Vector3;
     /** 获取朝向 */
-    static get_face_dir(): Vector3;
+    get_face_dir(): Vector3;
     /** 获取朝向 */
-    static get_face_direction(): Vector3;
+    get_face_direction(): Vector3;
     /** 获取生命体大力击倒阈值 */
-    static get_hard_punch_threshold(): void;
+    get_hard_punch_threshold(): void;
     /** 获取生命体血条宽度缩放 */
-    static get_hpbar_scale_x(): Fixed;
+    get_hpbar_scale_x(): Fixed;
     /** 获取生命体血条高度缩放 */
-    static get_hpbar_scale_y(): Fixed;
+    get_hpbar_scale_y(): Fixed;
     /** 获取指定生命体当前抓举的生命体 */
-    static get_lifted_lifeentity(): LifeEntity;
+    get_lifted_lifeentity(): LifeEntity;
     /** 获取指定生命体当前抓举的组件 */
-    static get_lifted_obstacle(): Obstacle;
+    get_lifted_obstacle(): Obstacle;
     /** 获取生命体控制玩家 */
-    static get_owner(): Role;
+    get_owner(): Role;
     /** 获取生命体击倒阈值 */
-    static get_punch_threshold(): void;
+    get_punch_threshold(): void;
     /** 获取生命体是否可拖动 */
-    static is_drag_enable(): boolean;
+    is_drag_enable(): boolean;
     /** 获取生命体是否可拖动 */
-    static is_draggable(): boolean;
+    is_draggable(): boolean;
     /** 生命体是否进入魂蛋模式 */
-    static is_ghost_mode(): boolean;
+    is_ghost_mode(): boolean;
     /** 生命体是否在跳跃中 */
-    static is_jumping(): boolean;
+    is_jumping(): boolean;
     /** 生命体是否在移动中 */
-    static is_moving(): boolean;
+    is_moving(): boolean;
     /** 生命体是否在飞扑中 */
-    static is_rushing(): boolean;
+    is_rushing(): boolean;
     /** 获取生命体是否可点击 */
-    static is_touch_enable(): boolean;
+    is_touch_enable(): boolean;
     /** 获取生命体是否可点击 */
-    static is_touchable(): boolean;
+    is_touchable(): boolean;
     /** 命令角色跳跃 */
-    static jump(): void;
+    jump(): void;
     /** 发送气泡表情 */
-    static play_emoji_with_offset(_emoji_key: EmojiKey, _show_time: Fixed, _offset: Vector3): void;
+    play_emoji_with_offset(_emoji_key: EmojiKey, _show_time: Fixed, _offset: Vector3): void;
     /** 播放面部表情 */
-    static play_face_emoji(_emoji_key: EmojiKey, _show_time: Fixed): void;
+    play_face_emoji(_emoji_key: EmojiKey, _show_time: Fixed): void;
     /** 播放面部表情 */
-    static play_face_expression(_emoji_key: EmojiKey, _show_time: Fixed): void;
+    play_face_expression(_emoji_key: EmojiKey, _show_time: Fixed): void;
     /** 还原模型变化 */
-    static recover_model(): void;
+    recover_model(): void;
     /** 还原模型变化 */
-    static reset_model(): void;
+    reset_model(): void;
     /** 设置寻路阈值 */
-    static set_ai_move_threshold(_threshold: Fixed): void;
+    set_ai_move_threshold(_threshold: Fixed): void;
     /** 设置朝向 */
-    static set_direction(_face_dir: Vector3): void;
+    set_direction(_face_dir: Vector3): void;
     /** 设置朝向 */
-    static set_face_dir(_face_dir: Vector3): void;
+    set_face_dir(_face_dir: Vector3): void;
     /** 设置朝向 */
-    static set_face_direction(_face_dir: Vector3): void;
+    set_face_direction(_face_dir: Vector3): void;
     /** 设置生命体大力击倒阈值 */
-    static set_hard_punch_threshold(_punch_threshold: Fixed): void;
+    set_hard_punch_threshold(_punch_threshold: Fixed): void;
     /** 设置生命体血条缩放 */
-    static set_hpbar_scale(_hpbar_scale_x: Fixed, _hpbar_scale_y: Fixed): void;
+    set_hpbar_scale(_hpbar_scale_x: Fixed, _hpbar_scale_y: Fixed): void;
     /** 设置质量条是否显示 */
-    static set_mass_bar_visible(_visible: boolean): void;
+    set_mass_bar_visible(_visible: boolean): void;
     /** 根据角色设置模型 */
-    static set_model_by_character(_character: Character, _include_ugc_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
+    set_model_by_character(_character: Character, _include_ugc_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
     /** 根据生物设置模型 */
-    static set_model_by_creature(_creature: Creature, _include_custom_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
+    set_model_by_creature(_creature: Creature, _include_custom_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
     /** 根据生物预设设置模型 */
-    static set_model_by_creature_key(_creature_key: CreatureKey, _include_custom_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
+    set_model_by_creature_key(_creature_key: CreatureKey, _include_custom_model: boolean | undefined, _inherit_scale: boolean | undefined, _inherit_capsule_size: boolean | undefined): void;
     /** 设置生命体击倒阈值 */
-    static set_punch_threshold(_punch_threshold: Fixed): void;
+    set_punch_threshold(_punch_threshold: Fixed): void;
     /** 设置搜敌集火目标 */
-    static set_search_enemy_focus_target(_target: LifeEntity): void;
+    set_search_enemy_focus_target(_target: LifeEntity): void;
     /** 设置搜敌优先级值by标签 */
-    static set_search_enemy_priority_value_by_tag(_tag: string, _priority: number): void;
+    set_search_enemy_priority_value_by_tag(_tag: string, _priority: number): void;
     /** 设置搜敌优先级值by单位实体 */
-    static set_search_enemy_priority_value_by_unit(_unit: LifeEntity, _priority: number): void;
+    set_search_enemy_priority_value_by_unit(_unit: LifeEntity, _priority: number): void;
     /** 设置搜敌优先级值by预设编号 */
-    static set_search_enemy_priority_value_by_unit_key(_unit_key: CreatureKey, _priority: number): void;
+    set_search_enemy_priority_value_by_unit_key(_unit_key: CreatureKey, _priority: number): void;
     /** 设置搜敌优先级值by单位类型 */
-    static set_search_enemy_priority_value_by_unit_type(_unit_prefab_type: Enums.UnitType, _priority: number): void;
+    set_search_enemy_priority_value_by_unit_type(_unit_prefab_type: Enums.UnitType, _priority: number): void;
     /** 发送气泡信息 */
-    static show_bubble_msg_with_offset(_show_msg: string, _show_time: Fixed, _max_dis: Fixed, _offset: Vector3): void;
+    show_bubble_msg_with_offset(_show_msg: string, _show_time: Fixed, _max_dis: Fixed, _offset: Vector3): void;
     /** 激活AI */
-    static start_ai(): void;
+    start_ai(): void;
     /** 命令生命体移动 */
-    static start_move_by_direction(_direction: Vector3, _duration: Fixed): void;
+    start_move_by_direction(_direction: Vector3, _duration: Fixed): void;
     /** 命令生命体移动到坐标点 */
-    static start_move_to_pos_with_threshold(_target_pos: Vector3, _duration: Fixed, _threshold: Fixed): void;
+    start_move_to_pos_with_threshold(_target_pos: Vector3, _duration: Fixed, _threshold: Fixed): void;
     /** 暂停AI */
-    static stop_ai(): void;
+    stop_ai(): void;
     /** 交换物品槽位 */
-    static swap_equipment_slot(_equipment: Equipment, _slot_type: Enums.EquipmentSlotType | undefined, _slot: number | undefined): void;
+    swap_equipment_slot(_equipment: Equipment, _slot_type: Enums.EquipmentSlotType | undefined, _slot: number | undefined): void;
     /** 生命体尝试下载具 */
-    static try_exit_vehicle(): void;
+    try_exit_vehicle(): void;
 }
 
 declare class LiftComp {
     /** 获取举起冷却时间 */
-    static get_lift_cd(): Fixed;
+    get_lift_cd(): Fixed;
     /** 获取举起冷却时间 */
-    static get_lift_cooldown(): Fixed;
+    get_lift_cooldown(): Fixed;
     /** 获取举起剩余冷却时间 */
-    static get_lift_left_cd(): Fixed;
+    get_lift_left_cd(): Fixed;
     /** 获取举起剩余冷却时间 */
-    static get_lift_remaining_cooldown(): Fixed;
+    get_lift_remaining_cooldown(): Fixed;
     /** 是否处于抓举状态 */
-    static is_lift_status(): boolean;
+    is_lift_status(): boolean;
     /** 举起单位 */
-    static lift_unit(_unit: Unit): void;
+    lift_unit(_unit: Unit): void;
     /** 设置举起冷却时间 */
-    static set_lift_cd(_cd_time: Fixed): void;
+    set_lift_cd(_cd_time: Fixed): void;
     /** 设置举起冷却时间 */
-    static set_lift_cooldown(_cd_time: Fixed): void;
+    set_lift_cooldown(_cd_time: Fixed): void;
     /** 设置举起剩余冷却时间 */
-    static set_lift_left_cd(_time: Fixed): void;
+    set_lift_left_cd(_time: Fixed): void;
     /** 设置举起剩余冷却时间 */
-    static set_lift_remaining_cooldown(_time: Fixed): void;
+    set_lift_remaining_cooldown(_time: Fixed): void;
 }
 
 declare class LiftedComp {
     /** 获取是否可抓举 */
-    static is_lifted_enable(): boolean;
+    is_lifted_enable(): boolean;
     /** 获取是否可抓举 */
-    static is_lifted_enabled(): boolean;
+    is_lifted_enabled(): boolean;
     /** 是否处于被抓举 */
-    static is_lifted_status(): boolean;
+    is_lifted_status(): boolean;
     /** 设置自定义投掷力量 */
-    static set_custom_thrown_force(_force: Fixed): void;
+    set_custom_thrown_force(_force: Fixed): void;
     /** 设置是否自定义投掷力量 */
-    static set_custom_thrown_force_enabled(_enable: boolean): void;
+    set_custom_thrown_force_enabled(_enable: boolean): void;
     /** 设置是否自定义投掷力量 */
-    static set_is_use_custom_thrown_force(_enable: boolean): void;
+    set_is_use_custom_thrown_force(_enable: boolean): void;
     /** 设置是否可抓举 */
-    static set_lifted_enable(_enable: boolean): void;
+    set_lifted_enable(_enable: boolean): void;
     /** 设置是否可抓举 */
-    static set_lifted_enabled(_enable: boolean): void;
+    set_lifted_enabled(_enable: boolean): void;
 }
 
 declare class LuaAPI {
@@ -2631,915 +2631,915 @@ declare class LuaAPI {
 
 declare class Modifier {
     /** 增加效果的持续时间 */
-    static add_duration(_add_time: Fixed): void;
+    add_duration(_add_time: Fixed): void;
     /** 增加效果层数 */
-    static add_stack_count(_stack_count_add: number): void;
+    add_stack_count(_stack_count_add: number): void;
     /** 获取效果描述 */
-    static get_desc(): string;
+    get_desc(): string;
     /** 获得效果编号 */
-    static get_key(): ModifierKey;
+    get_key(): ModifierKey;
     /** 获取效果的最大层数 */
-    static get_max_stack_count(): string;
+    get_max_stack_count(): string;
     /** 获取效果名称 */
-    static get_name(): string;
+    get_name(): string;
     /** 获取所属技能 */
-    static get_owner_ability(): Ability;
+    get_owner_ability(): Ability;
     /** 获取效果携带角色 */
-    static get_owner_character(): Character;
+    get_owner_character(): Character;
     /** 获取效果携带生物 */
-    static get_owner_creature(): Creature;
+    get_owner_creature(): Creature;
     /** 获取携带效果的生命体 */
-    static get_owner_life_entity(): LifeEntity;
+    get_owner_life_entity(): LifeEntity;
     /** 获取效果携带者 */
-    static get_owner_unit(): Unit;
+    get_owner_unit(): Unit;
     /** 获取效果释放者 */
-    static get_releaser_unit(): Unit;
+    get_releaser_unit(): Unit;
     /** 获取效果剩余持续时间 */
-    static get_remain_duration(): Fixed;
+    get_remain_duration(): Fixed;
     /** 获取效果剩余持续时间 */
-    static get_remain_time(): Fixed;
+    get_remain_time(): Fixed;
     /** 获取效果当前层数 */
-    static get_stack_count(): string;
+    get_stack_count(): string;
     /** 设置效果剩余时间 */
-    static set_remain_duration(_remain_duration: Fixed): void;
+    set_remain_duration(_remain_duration: Fixed): void;
     /** 设置效果剩余时间 */
-    static set_remain_time(_remain_duration: Fixed): void;
+    set_remain_time(_remain_duration: Fixed): void;
     /** 设置效果层数 */
-    static set_stack_count(_stack_count_add: number): void;
+    set_stack_count(_stack_count_add: number): void;
 }
 
 declare class ModifierComp {
     /** 添加效果 */
-    static add_modifier(_modifier_id: ModifierKey): Modifier;
+    add_modifier(_modifier_id: ModifierKey): Modifier;
     /** 添加效果 */
-    static add_modifier_by_key(_modifier_id: ModifierKey, _params_dict: any): Modifier;
+    add_modifier_by_key(_modifier_id: ModifierKey, _params_dict: any): Modifier;
     /** 销毁效果 */
-    static destroy_buff(_modifier: Modifier): void;
+    destroy_buff(_modifier: Modifier): void;
     /** 销毁效果 */
-    static destroy_modifier(_modifier: Modifier): void;
+    destroy_modifier(_modifier: Modifier): void;
     /** 获取单位效果 */
-    static get_buff(_modifier_id: ModifierKey): Modifier;
+    get_buff(_modifier_id: ModifierKey): Modifier;
     /** 获取单位所有效果 */
-    static get_buffs(): Modifier[];
+    get_buffs(): Modifier[];
     /** 获取单位效果 */
-    static get_modifier_by_modifier_key(_modifier_id: ModifierKey): Modifier;
+    get_modifier_by_modifier_key(_modifier_id: ModifierKey): Modifier;
     /** 获取单位所有效果 */
-    static get_modifiers(): Modifier[];
+    get_modifiers(): Modifier[];
     /** 是否拥有指定编号的效果 */
-    static has_modifier_by_key(_modifier_key: ModifierKey): boolean;
+    has_modifier_by_key(_modifier_key: ModifierKey): boolean;
     /** 移除效果 */
-    static remove_buff(_modifier_id: ModifierKey): void;
+    remove_buff(_modifier_id: ModifierKey): void;
     /** 移除效果 */
-    static remove_modifier_by_key(_modifier_id: ModifierKey): void;
+    remove_modifier_by_key(_modifier_id: ModifierKey): void;
     /** 移除效果 */
-    static remove_modifier_by_modifier_key(_modifier_id: ModifierKey): void;
+    remove_modifier_by_modifier_key(_modifier_id: ModifierKey): void;
 }
 
 declare class MoveStatusComp {
     /** 是否滚动 */
-    static is_fling_status(): boolean;
+    is_fling_status(): boolean;
     /** 是否失控 */
-    static is_lost_control_status(): boolean;
+    is_lost_control_status(): boolean;
     /** 开始锁定面向目标 */
-    static start_face_lock_target(_target_unit: Unit, _time: Fixed): void;
+    start_face_lock_target(_target_unit: Unit, _time: Fixed): void;
     /** 结束锁定面向目标 */
-    static stop_face_lock_target(): void;
+    stop_face_lock_target(): void;
 }
 
 declare class Obstacle {
     /** 获取公告板文本字体大小 */
-    static get_billboard_font_size(): number;
+    get_billboard_font_size(): number;
     /** 获取公告板文本内容 */
-    static get_billboard_text(): string;
+    get_billboard_text(): string;
     /** 返回绑定的物品 */
-    static get_bound_equipment(): Equipment;
+    get_bound_equipment(): Equipment;
     /** 获取牌数(对象只能为麻将/扑克) */
-    static get_chess_rank(): number;
+    get_chess_rank(): number;
     /** 获取组件是否可拖动 */
-    static is_drag_enable(): boolean;
+    is_drag_enable(): boolean;
     /** 获取组件是否可拖动 */
-    static is_draggable(): boolean;
+    is_draggable(): boolean;
     /** 获取组件是否可点击 */
-    static is_touch_enable(): boolean;
+    is_touch_enable(): boolean;
     /** 获取组件是否可点击 */
-    static is_touchable(): boolean;
+    is_touchable(): boolean;
     /** 重置组件碰撞限制 */
-    static reset_collision_limit(_limit_type: Enums.CollisionLimitType): void;
+    reset_collision_limit(_limit_type: Enums.CollisionLimitType): void;
     /** 设置公告板文本字体大小 */
-    static set_billboard_font_size(_font_size: number): void;
+    set_billboard_font_size(_font_size: number): void;
     /** 设置公告板文本内容 */
-    static set_billboard_text(_content: string): void;
+    set_billboard_text(_content: string): void;
     /** 设置公告板文本颜色 */
-    static set_billboard_text_color(_color: Color, _gradient_color_1: number | undefined, _gradient_color_2: number | undefined, _gradient_color_3: number | undefined, _gradient_color_4: number | undefined): void;
+    set_billboard_text_color(_color: Color, _gradient_color_1: number | undefined, _gradient_color_2: number | undefined, _gradient_color_3: number | undefined, _gradient_color_4: number | undefined): void;
     /** 设置组件碰撞次数限制 */
-    static set_collision_count_limit(_limit_type: Enums.CollisionLimitType, _value: number): void;
+    set_collision_count_limit(_limit_type: Enums.CollisionLimitType, _value: number): void;
     /** 设置组件碰撞间隔限制 */
-    static set_collision_interval_limit(_limit_type: Enums.CollisionLimitType, _value: Fixed): void;
+    set_collision_interval_limit(_limit_type: Enums.CollisionLimitType, _value: Fixed): void;
     /** 设置组件碰撞次数限制 */
-    static set_collision_limit_count(_limit_type: Enums.CollisionLimitType, _value: number): void;
+    set_collision_limit_count(_limit_type: Enums.CollisionLimitType, _value: number): void;
     /** 设置组件碰撞间隔限制 */
-    static set_collision_limit_interval(_limit_type: Enums.CollisionLimitType, _value: Fixed): void;
+    set_collision_limit_interval(_limit_type: Enums.CollisionLimitType, _value: Fixed): void;
     /** 设置组件是否可拖动 */
-    static set_drag_enable(_enabled: boolean): void;
+    set_drag_enable(_enabled: boolean): void;
     /** 设置组件是否可拖动 */
-    static set_draggable(_enabled: boolean): void;
+    set_draggable(_enabled: boolean): void;
     /** 设置场景排行榜分数 */
-    static set_ranklist_score(_role: Role, _score: number): void;
+    set_ranklist_score(_role: Role, _score: number): void;
     /** 设置场景排行榜分数 */
-    static set_ranklist_score_by_role(_role: Role, _score: number): void;
+    set_ranklist_score_by_role(_role: Role, _score: number): void;
 }
 
 declare class OwnerComp {
     /** 修改所属玩家 */
-    static change_owner(_role: Role): void;
+    change_owner(_role: Role): void;
     /** 获取所属玩家 */
-    static get_owner_role(): Role;
+    get_owner_role(): Role;
 }
 
 declare class Role {
     /** 增加成就进度 */
-    static add_achieve_count(_event_id: Achievement, _add_count: number): void;
+    add_achieve_count(_event_id: Achievement, _add_count: number): void;
     /** 增加成就进度 */
-    static add_achievement_progress(_event_id: Achievement, _add_count: number): void;
+    add_achievement_progress(_event_id: Achievement, _add_count: number): void;
     /** 增加玩家积分 */
-    static add_score(_add_score: number): void;
+    add_score(_add_score: number): void;
     /** 消耗玩家指定数量道具 */
-    static consume_commodity(_commodity_id: UgcCommodity, _num: number): void;
+    consume_commodity(_commodity_id: UgcCommodity, _num: number): void;
     /** 消耗玩家指定数量道具 */
-    static consume_ugc_commodity(_commodity_id: UgcCommodity, _num: number): void;
+    consume_ugc_commodity(_commodity_id: UgcCommodity, _num: number): void;
     /** 关闭单位菲尼尔效果 */
-    static disable_unit_fresnel(_unit: Unit): void;
+    disable_unit_fresnel(_unit: Unit): void;
     /** 关闭单位蒙版 */
-    static disable_unit_mask(_unit: Unit): void;
+    disable_unit_mask(_unit: Unit): void;
     /** 关闭单位描边 */
-    static disable_unit_outline(_unit: Unit): void;
+    disable_unit_outline(_unit: Unit): void;
     /** 玩家进入观战 */
-    static enter_watch_mode(_camp_limit: boolean | undefined, _exit_visible: boolean | undefined): void;
+    enter_watch_mode(_camp_limit: boolean | undefined, _exit_visible: boolean | undefined): void;
     /** 玩家退出观战 */
-    static exit_watch_mode(): void;
+    exit_watch_mode(): void;
     /** 玩家游戏失败 */
-    static game_lose(): void;
+    game_lose(): void;
     /** 玩家游戏失败并显示失败界面 */
-    static game_lose_and_show_result_panel(): void;
+    game_lose_and_show_result_panel(): void;
     /** 玩家游戏胜利并显示胜利界面 */
-    static game_win_and_show_result_panel(): void;
+    game_win_and_show_result_panel(): void;
     /** 获取成就进度 */
-    static get_achieve_count(_event_id: Achievement): number;
+    get_achieve_count(_event_id: Achievement): number;
     /** 获取成就进度 */
-    static get_achievement_progress(_event_id: Achievement): number;
+    get_achievement_progress(_event_id: Achievement): number;
     /** 获取存档值 */
-    static get_archive_by_type(_archive_type: Enums.ArchiveType, _key: Archive): any;
+    get_archive_by_type(_archive_type: Enums.ArchiveType, _key: Archive): any;
     /** 获取玩家相机的朝向(需要开启玩家相机旋转同步) */
-    static get_camera_dir(): Vector3;
+    get_camera_dir(): Vector3;
     /** 获取玩家相机的朝向(需要开启玩家相机旋转同步) */
-    static get_camera_direction(): Vector3;
+    get_camera_direction(): Vector3;
     /** 获取玩家相机的旋转(需要开启玩家相机旋转同步) */
-    static get_camera_rotation(): Quaternion;
+    get_camera_rotation(): Quaternion;
     /** 获取玩家阵营 */
-    static get_camp(): Camp;
+    get_camp(): Camp;
     /** 玩家拥有道具数量 */
-    static get_commodity_count(_commodity_id: UgcCommodity): number;
+    get_commodity_count(_commodity_id: UgcCommodity): number;
     /** 获取控制单位 */
-    static get_ctrl_unit(): Character;
+    get_ctrl_unit(): Character;
     /** 获取玩家游戏结果 */
-    static get_game_result(): Enums.GameResult;
+    get_game_result(): Enums.GameResult;
     /** 获取玩家头像 */
-    static get_head_icon(): ImageKey;
+    get_head_icon(): ImageKey;
     /** 获取玩家昵称 */
-    static get_name(): string;
+    get_name(): string;
     /** 获取玩家ID */
-    static get_roleid(): RoleID;
+    get_roleid(): RoleID;
     /** 获取玩家积分 */
-    static get_score(): number;
+    get_score(): number;
     /** 玩家拥有道具数量 */
-    static get_ugc_commodity_num(_commodity_id: UgcCommodity): number;
+    get_ugc_commodity_num(_commodity_id: UgcCommodity): number;
     /** 获取语音音量 */
-    static get_voice_volume(): Fixed;
+    get_voice_volume(): Fixed;
     /** 玩家是否拥有道具 */
-    static has_commodity(_commodity_id: UgcCommodity): boolean;
+    has_commodity(_commodity_id: UgcCommodity): boolean;
     /** 玩家是否记录过存档 */
-    static has_saved_archive(): boolean;
+    has_saved_archive(): boolean;
     /** 玩家是否拥有道具 */
-    static has_ugc_commodity(_commodity_id: UgcCommodity): boolean;
+    has_ugc_commodity(_commodity_id: UgcCommodity): boolean;
     /** 成就是否完成 */
-    static is_achieve_finish(_event_id: Achievement): boolean;
+    is_achieve_finish(_event_id: Achievement): boolean;
     /** 成就是否完成 */
-    static is_achievement_completed(_event_id: Achievement): boolean;
+    is_achievement_completed(_event_id: Achievement): boolean;
     /** 是否是乐园会员 */
-    static is_gallery_vip(): boolean;
+    is_gallery_vip(): boolean;
     /** 玩家是否失败 */
-    static is_lose(): boolean;
+    is_lose(): boolean;
     /** 玩家是否失败 */
-    static is_losed(): boolean;
+    is_losed(): boolean;
     /** 玩家是否失败 */
-    static is_loss(): boolean;
+    is_loss(): boolean;
     /** 玩家是否失败 */
-    static is_lost(): boolean;
+    is_lost(): boolean;
     /** 是否收藏本地图 */
-    static is_map_favorited(): boolean;
+    is_map_favorited(): boolean;
     /** 是否点赞本地图 */
-    static is_map_liked(): boolean;
+    is_map_liked(): boolean;
     /** 玩家是否在线 */
-    static is_online(): boolean;
+    is_online(): boolean;
     /** 是否是派对手册进阶会员 */
-    static is_pass_premium_vip(): boolean;
+    is_pass_premium_vip(): boolean;
     /** 玩家是否失败 */
-    static is_role_lose(): boolean;
+    is_role_lose(): boolean;
     /** 玩家是否胜利 */
-    static is_role_win(): boolean;
+    is_role_win(): boolean;
     /** 玩家是否订阅地图作者 */
-    static is_subscribed_map_author(): boolean;
+    is_subscribed_map_author(): boolean;
     /** 玩家进入观战 */
-    static is_watch_mode(): boolean;
+    is_watch_mode(): boolean;
     /** 玩家是否胜利 */
-    static is_win(): boolean;
+    is_win(): boolean;
     /** 玩家是否胜利 */
-    static is_won(): boolean;
+    is_won(): boolean;
     /** 设置是否开启玩家相机旋转同步 */
-    static listen_camera_rotation(_enabled: boolean): void;
+    listen_camera_rotation(_enabled: boolean): void;
     /** 设置监听陀螺仪信息 */
-    static listen_gyroscope_info(_enabled: boolean): void;
+    listen_gyroscope_info(_enabled: boolean): void;
     /** 发起进入关卡投票 */
-    static load_level_by_voting(_level_key: LevelKey): void;
+    load_level_by_voting(_level_key: LevelKey): void;
     /** 玩家游戏失败 */
-    static lose(): void;
+    lose(): void;
     /** 暂停玩家相机运动 */
-    static pause_camera_motor(): void;
+    pause_camera_motor(): void;
     /** 玩家播放2D音效 */
-    static play_2d_sound_with_params(_event_id: SoundID, _duration: Fixed, _volume: Fixed, _speed: Fixed): SoundID;
+    play_2d_sound_with_params(_event_id: SoundID, _duration: Fixed, _volume: Fixed, _speed: Fixed): SoundID;
     /** 播放广告 */
-    static play_advertisement_with_event(_success_event: string, _fail_event: string, _ad_tag: string | undefined, _success_data: any, _fail_data: any): void;
+    play_advertisement_with_event(_success_event: string, _fail_event: string, _ad_tag: string | undefined, _success_data: any, _fail_data: any): void;
     /** 播放指定剧情动画 */
-    static play_montage(_montage_key: MontageKey, _start_time: Fixed, _play_to_end: boolean, _play_time: Fixed): void;
+    play_montage(_montage_key: MontageKey, _start_time: Fixed, _play_to_end: boolean, _play_time: Fixed): void;
     /** 播放指定剧情动画 */
-    static play_montage_by_id(_montage_key: MontageKey, _start_time: Fixed, _play_to_end: boolean, _play_time: Fixed): void;
+    play_montage_by_id(_montage_key: MontageKey, _start_time: Fixed, _play_to_end: boolean, _play_time: Fixed): void;
     /** 播放屏幕特效 */
-    static play_screen_sfx(_sfx_key: SfxKey, _duration: Fixed, _rate: Fixed): SfxID;
+    play_screen_sfx(_sfx_key: SfxKey, _duration: Fixed, _rate: Fixed): SfxID;
     /** 播放界面动效 */
-    static play_ui_animation_effect(_effect_node: EEffectNode): void;
+    play_ui_animation_effect(_effect_node: EEffectNode): void;
     /** 播放界面动效 */
-    static play_ui_effect(_effect_node: EEffectNode): void;
+    play_ui_effect(_effect_node: EEffectNode): void;
     /** 重置界面动画 */
-    static reset_animation(_node: ENode): void;
+    reset_animation(_node: ENode): void;
     /** 重置玩家相机 */
-    static reset_camera(_reset_angle: boolean | undefined, _reset_bind: boolean | undefined, _reset_point: boolean | undefined, _reset_prop_pitch: boolean | undefined): void;
+    reset_camera(_reset_angle: boolean | undefined, _reset_bind: boolean | undefined, _reset_point: boolean | undefined, _reset_prop_pitch: boolean | undefined): void;
     /** 恢复玩家相机运动 */
-    static resume_camera_motor(): void;
+    resume_camera_motor(): void;
     /** 发送埋点数据变化 */
-    static send_track_data_change(_track_data_key: string, _change_num: number): void;
+    send_track_data_change(_track_data_key: string, _change_num: number): void;
     /** 发送埋点数据变化 */
-    static send_track_data_log(_track_data_key: string, _change_num: number): void;
+    send_track_data_log(_track_data_key: string, _change_num: number): void;
     /** 发送UI自定义消息 */
-    static send_ui_custom_event(_event_name: string, _data: any): void;
+    send_ui_custom_event(_event_name: string, _data: any): void;
     /** 设置成就进度 */
-    static set_achieve_count(_event_id: Achievement, _count: number): void;
+    set_achieve_count(_event_id: Achievement, _count: number): void;
     /** 设置成就进度 */
-    static set_achievement_progress(_event_id: Achievement, _count: number): void;
+    set_achievement_progress(_event_id: Achievement, _count: number): void;
     /** 设置存档值 */
-    static set_archive_by_type(_archive_type: Enums.ArchiveType, _key: Archive, _val: any): void;
+    set_archive_by_type(_archive_type: Enums.ArchiveType, _key: Archive, _val: any): void;
     /** 设置存档点坐标 */
-    static set_archive_point(_position: Vector3, _priority: number, _direction: Vector3): void;
+    set_archive_point(_position: Vector3, _priority: number, _direction: Vector3): void;
     /** 设置物品格关联生命体 */
-    static set_bagslot_related_life_entity(_bag_slot: EBagSlot, _life_entity: LifeEntity): void;
+    set_bagslot_related_life_entity(_bag_slot: EBagSlot, _life_entity: LifeEntity): void;
     /** 设置物品格关联生命体 */
-    static set_bagslot_related_lifeentity(_bag_slot: EBagSlot, _life_entity: LifeEntity): void;
+    set_bagslot_related_lifeentity(_bag_slot: EBagSlot, _life_entity: LifeEntity): void;
     /** 设置玩家商店显示 */
-    static set_battle_shop_visible(_battle_shop_id: BattleShopKey, _visible: boolean): void;
+    set_battle_shop_visible(_battle_shop_id: BattleShopKey, _visible: boolean): void;
     /** 玩家设置暗角 */
-    static set_blind_corner(_enable: boolean, _strength: Fixed, _color: Color): void;
+    set_blind_corner(_enable: boolean, _strength: Fixed, _color: Color): void;
     /** 设置按钮控件的状态 */
-    static set_button_enabled(_button: EButton, _enabled: boolean): void;
+    set_button_enabled(_button: EButton, _enabled: boolean): void;
     /** 设置UI按钮节点文字字号 */
-    static set_button_font_size(_key: EButton, _font_size: Fixed): void;
+    set_button_font_size(_key: EButton, _font_size: Fixed): void;
     /** 设置UI按钮节点常态图片 */
-    static set_button_normal_image(_button: EButton, _image_key: ImageKey): void;
+    set_button_normal_image(_button: EButton, _image_key: ImageKey): void;
     /** 设置UI按钮节点按下图片 */
-    static set_button_pressed_image(_button: EButton, _image_key: ImageKey): void;
+    set_button_pressed_image(_button: EButton, _image_key: ImageKey): void;
     /** 设置UI按钮节点文本 */
-    static set_button_text(_button: EButton, _text: string): void;
+    set_button_text(_button: EButton, _text: string): void;
     /** 设置UI按钮节点文字颜色 */
-    static set_button_text_color(_button: EButton, _text_color: Color): void;
+    set_button_text_color(_button: EButton, _text_color: Color): void;
     /** 设置玩家相机的模式 */
-    static set_camera_bind_mode(_mode: Enums.CameraBindMode): void;
+    set_camera_bind_mode(_mode: Enums.CameraBindMode): void;
     /** 设置玩家相机是否可拖动 */
-    static set_camera_draggable(_draggable: boolean): void;
+    set_camera_draggable(_draggable: boolean): void;
     /** 设置玩家陀螺仪控制镜头 */
-    static set_camera_gyroscope_control_enabled(_is_control: boolean): void;
+    set_camera_gyroscope_control_enabled(_is_control: boolean): void;
     /** 设置玩家相机的绑定坐标 */
-    static set_camera_lock_position(_pos: Vector3): void;
+    set_camera_lock_position(_pos: Vector3): void;
     /** 设置玩家相机的投影类型 */
-    static set_camera_projection_type(_projection_type: Enums.CameraProjectionType): void;
+    set_camera_projection_type(_projection_type: Enums.CameraProjectionType): void;
     /** 设置玩家相机的属性 */
-    static set_camera_property(_property: Enums.CameraPropertyType, _value: Fixed): void;
+    set_camera_property(_property: Enums.CameraPropertyType, _value: Fixed): void;
     /** 设置玩家相机面向指定朝向 */
-    static set_camera_rotation_by_direction(_target_dir: Vector3, _duration: Fixed): void;
+    set_camera_rotation_by_direction(_target_dir: Vector3, _duration: Fixed): void;
     /** 设置是否开启玩家相机旋转同步 */
-    static set_camera_rotation_sync_enabled(_enabled: boolean): void;
+    set_camera_rotation_sync_enabled(_enabled: boolean): void;
     /** 设置付费道具商店可见性 */
-    static set_goods_panel_visible(_visible: boolean): void;
+    set_goods_panel_visible(_visible: boolean): void;
     /** 设置玩家陀螺仪控制组件 */
-    static set_gyroscope_control_unit(_is_control: boolean, _unit: Unit): void;
+    set_gyroscope_control_unit(_is_control: boolean, _unit: Unit): void;
     /** 设置监听陀螺仪信息 */
-    static set_gyroscope_sync_enabled(_enabled: boolean): void;
+    set_gyroscope_sync_enabled(_enabled: boolean): void;
     /** 设置UI图片颜色 */
-    static set_image_color(_image: EImage, _image_color: Color, _transition_time: Fixed): void;
+    set_image_color(_image: EImage, _image_color: Color, _transition_time: Fixed): void;
     /** 设置UI图片节点图片 */
-    static set_image_texture_by_key_with_auto_resize(_image: EImage, _image_key: ImageKey, _reset_size: boolean | undefined): void;
+    set_image_texture_by_key_with_auto_resize(_image: EImage, _image_key: ImageKey, _reset_size: boolean | undefined): void;
     /** 设置UI图片节点图片 */
-    static set_image_texture_with_auto_resize(_image: EImage, _image_path: string, _reset_size: boolean | undefined): void;
+    set_image_texture_with_auto_resize(_image: EImage, _image_path: string, _reset_size: boolean | undefined): void;
     /** 设置UI图片节点图片 */
-    static set_image_texture_with_size(_image: EImage, _image_key: ImageKey, _reset_size: boolean | undefined): void;
+    set_image_texture_with_size(_image: EImage, _image_key: ImageKey, _reset_size: boolean | undefined): void;
     /** 设置UI输入节点文本 */
-    static set_input_field_text(_input_field: EInputField, _text: string): void;
+    set_input_field_text(_input_field: EInputField, _text: string): void;
     /** 设置UI文本节点背景颜色 */
-    static set_label_background_color(_label: ELabel, _color: Color, _transition_time: Fixed): void;
+    set_label_background_color(_label: ELabel, _color: Color, _transition_time: Fixed): void;
     /** 设置UI文本节点背景不透明度 */
-    static set_label_background_opacity(_label: ELabel, _opacity: Fixed, _transition_time: Fixed): void;
+    set_label_background_opacity(_label: ELabel, _opacity: Fixed, _transition_time: Fixed): void;
     /** 设置UI文本节点的字体颜色 */
-    static set_label_color(_label: ELabel, _color: Color, _transition_time: Fixed): void;
+    set_label_color(_label: ELabel, _color: Color, _transition_time: Fixed): void;
     /** 设置UI文本节点的描边是否开启 */
-    static set_label_enable_outline(_label: ELabel, _enable: boolean): void;
+    set_label_enable_outline(_label: ELabel, _enable: boolean): void;
     /** 设置UI文本节点的阴影是否开启 */
-    static set_label_enable_shadow(_label: ELabel, _enable: boolean): void;
+    set_label_enable_shadow(_label: ELabel, _enable: boolean): void;
     /** 设置UI文本节点字体 */
-    static set_label_font(_label: ELabel, _font_key: FontKey): void;
+    set_label_font(_label: ELabel, _font_key: FontKey): void;
     /** 设置UI文本节点的字体大小 */
-    static set_label_font_size(_label: ELabel, _font_size: number, _transition_time: Fixed): void;
+    set_label_font_size(_label: ELabel, _font_size: number, _transition_time: Fixed): void;
     /** 设置UI文本节点的描边颜色 */
-    static set_label_outline_color(_label: ELabel, _color: Color): void;
+    set_label_outline_color(_label: ELabel, _color: Color): void;
     /** 设置UI文本节点的描边是否开启 */
-    static set_label_outline_enabled(_label: ELabel, _enable: boolean): void;
+    set_label_outline_enabled(_label: ELabel, _enable: boolean): void;
     /** 设置UI文本节点的描边不透明度 */
-    static set_label_outline_opacity(_label: ELabel, _opacity: Fixed): void;
+    set_label_outline_opacity(_label: ELabel, _opacity: Fixed): void;
     /** 设置UI文本节点的描边大小 */
-    static set_label_outline_width(_label: ELabel, _width: Fixed): void;
+    set_label_outline_width(_label: ELabel, _width: Fixed): void;
     /** 设置UI文本节点的阴影颜色 */
-    static set_label_shadow_color(_label: ELabel, _color: Color): void;
+    set_label_shadow_color(_label: ELabel, _color: Color): void;
     /** 设置UI文本节点的阴影是否开启 */
-    static set_label_shadow_enabled(_label: ELabel, _enable: boolean): void;
+    set_label_shadow_enabled(_label: ELabel, _enable: boolean): void;
     /** 设置UI文本节点的阴影x偏移 */
-    static set_label_shadow_x_offset(_label: ELabel, _offset: Fixed): void;
+    set_label_shadow_x_offset(_label: ELabel, _offset: Fixed): void;
     /** 设置UI文本节点的阴影y偏移 */
-    static set_label_shadow_y_offset(_label: ELabel, _offset: Fixed): void;
+    set_label_shadow_y_offset(_label: ELabel, _offset: Fixed): void;
     /** 设置UI文本节点的文本 */
-    static set_label_text(_label: ELabel, _text: string): void;
+    set_label_text(_label: ELabel, _text: string): void;
     /** 设置是否开启玩家相机旋转同步 */
-    static set_listen_camera_rotation(_enabled: boolean): void;
+    set_listen_camera_rotation(_enabled: boolean): void;
     /** 设置玩家昵称可见性 */
-    static set_name_visible(_visible: boolean): void;
+    set_name_visible(_visible: boolean): void;
     /** 设置玩家昵称可见性 */
-    static set_nickname_visible(_visible: boolean): void;
+    set_nickname_visible(_visible: boolean): void;
     /** 设置UI节点交互开关 */
-    static set_node_touch_enabled(_node: ENode, _touch_enabled: boolean): void;
+    set_node_touch_enabled(_node: ENode, _touch_enabled: boolean): void;
     /** 设置UI节点可见性 */
-    static set_node_visible(_node: ENode, _visible: boolean): void;
+    set_node_visible(_node: ENode, _visible: boolean): void;
     /** 设置UI进度条节点进度 */
-    static set_progressbar_current(_progress_bar: EProgressbar, _current: number): void;
+    set_progressbar_current(_progress_bar: EProgressbar, _current: number): void;
     /** 设置UI进度条节点最大进度 */
-    static set_progressbar_max(_progress_bar: EProgressbar, _max: number): void;
+    set_progressbar_max(_progress_bar: EProgressbar, _max: number): void;
     /** 设置UI进度条最小进度 */
-    static set_progressbar_min(_key: EProgressbar, _min: number): void;
+    set_progressbar_min(_key: EProgressbar, _min: number): void;
     /** 设置UI进度条节点过渡 */
-    static set_progressbar_transition(_progress_bar: EProgressbar, _current: number, _transition_time: Fixed): void;
+    set_progressbar_transition(_progress_bar: EProgressbar, _current: number, _transition_time: Fixed): void;
     /** 设置玩家阵营 */
-    static set_role_camp(_camp: Camp): void;
+    set_role_camp(_camp: Camp): void;
     /** 设置玩家控制开启/关闭 */
-    static set_role_ctrl(_enable: boolean): void;
+    set_role_ctrl(_enable: boolean): void;
     /** 设置玩家控制开启/关闭 */
-    static set_role_ctrl_enabled(_enable: boolean): void;
+    set_role_ctrl_enabled(_enable: boolean): void;
     /** 设置玩家积分 */
-    static set_score(_score: number): void;
+    set_score(_score: number): void;
     /** 设置付费道具商店可见性 */
-    static set_ugc_goods_panel_visible(_visible: boolean): void;
+    set_ugc_goods_panel_visible(_visible: boolean): void;
     /** 设置UI节点不透明度 */
-    static set_ui_opacity(_node: ENode, _opacity: Fixed): void;
+    set_ui_opacity(_node: ENode, _opacity: Fixed): void;
     /** 设置单位菲尼尔效果 */
-    static set_unit_fresnel(_unit: Unit, _fresnel_scale: Fixed, _color: Color, _intensity: number): void;
+    set_unit_fresnel(_unit: Unit, _fresnel_scale: Fixed, _color: Color, _intensity: number): void;
     /** 设置单位菲尼尔效果 */
-    static set_unit_fresnel_gradual(_unit: Unit, _fresnel_scale: Fixed, _color: Color, _intensity: number, _duration: Fixed): void;
+    set_unit_fresnel_gradual(_unit: Unit, _fresnel_scale: Fixed, _color: Color, _intensity: number, _duration: Fixed): void;
     /** 设置单位蒙版 */
-    static set_unit_mask(_unit: Unit, _color: Color): void;
+    set_unit_mask(_unit: Unit, _color: Color): void;
     /** 设置单位描边 */
-    static set_unit_outline(_unit: Unit, _width: number, _color: Color): void;
+    set_unit_outline(_unit: Unit, _width: number, _color: Color): void;
     /** 设置单位穿透显示 */
-    static set_unit_see_through(_unit: Unit, _enabled: boolean): void;
+    set_unit_see_through(_unit: Unit, _enabled: boolean): void;
     /** 设置单位穿透显示 */
-    static set_unit_see_through_enabled(_unit: Unit, _enabled: boolean): void;
+    set_unit_see_through_enabled(_unit: Unit, _enabled: boolean): void;
     /** 设置单位对玩家可见性 */
-    static set_unit_visible(_unit: Unit, _is_visible: boolean): void;
+    set_unit_visible(_unit: Unit, _is_visible: boolean): void;
     /** 设置是否开启语音音量同步 */
-    static set_voice_volume_sync_enabled(_enabled: boolean): void;
+    set_voice_volume_sync_enabled(_enabled: boolean): void;
     /** 设置玩家屏幕震动 */
-    static shake_camera(_shake_type: CameraShakeType, _shake_max_amplitude: Fixed, _shake_time: Fixed, _shake_source: Unit, _shake_frequency: Fixed, _shake_time_decay: Fixed, _shake_effect_scope: Fixed, _shake_undamped_scope: Fixed, _shake_distance_decay: Fixed): void;
+    shake_camera(_shake_type: CameraShakeType, _shake_max_amplitude: Fixed, _shake_time: Fixed, _shake_source: Unit, _shake_frequency: Fixed, _shake_time_decay: Fixed, _shake_effect_scope: Fixed, _shake_undamped_scope: Fixed, _shake_distance_decay: Fixed): void;
     /** 设置玩家的背包界面显隐 */
-    static show_bag_panel(_visible: boolean): void;
+    show_bag_panel(_visible: boolean): void;
     /** 玩家显示指定商品购买界面 */
-    static show_goods_purchase_panel(_raw_goods_id: UgcGoods, _show_time: Fixed): void;
+    show_goods_purchase_panel(_raw_goods_id: UgcGoods, _show_time: Fixed): void;
     /** 显示点赞界面 */
-    static show_like_interact_ui(): void;
+    show_like_interact_ui(): void;
     /** 显示点赞界面 */
-    static show_like_panel(): void;
+    show_like_panel(): void;
     /** 玩家显示飘字信息 */
-    static show_tips(_content: string, _duration: Fixed): void;
+    show_tips(_content: string, _duration: Fixed): void;
     /** 玩家显示指定商品购买界面 */
-    static show_ugc_good_purchase_panel(_raw_goods_id: UgcGoods, _show_time: Fixed): void;
+    show_ugc_good_purchase_panel(_raw_goods_id: UgcGoods, _show_time: Fixed): void;
     /** 显示玩家决战技选择界面 */
-    static show_ultimate_ability_panel(_keep_time: number): void;
+    show_ultimate_ability_panel(_keep_time: number): void;
     /** 跳过剧情动画 */
-    static skip_current_montage(_has_black_screen: boolean): void;
+    skip_current_montage(_has_black_screen: boolean): void;
     /** 发起进入关卡投票 */
-    static start_level_vote(_level_key: LevelKey): void;
+    start_level_vote(_level_key: LevelKey): void;
     /** 开始手机震动 */
-    static start_vibration(_vibrate_type: number, _vibrate_count: number, _vibrate_interval: Fixed): void;
+    start_vibration(_vibrate_type: number, _vibrate_count: number, _vibrate_interval: Fixed): void;
     /** 对指定单位停止2D声音 */
-    static stop_2d_sound(_sound_instance_id: SoundID): void;
+    stop_2d_sound(_sound_instance_id: SoundID): void;
     /** 停止玩家相机运动 */
-    static stop_camera_motor(): void;
+    stop_camera_motor(): void;
     /** 停止界面动效 */
-    static stop_ui_animation_effect(_effect_node: EEffectNode): void;
+    stop_ui_animation_effect(_effect_node: EEffectNode): void;
     /** 停止界面动效 */
-    static stop_ui_effect(_effect_node: EEffectNode): void;
+    stop_ui_effect(_effect_node: EEffectNode): void;
     /** UI文本节点解除属性 */
-    static unbind_label_text(_label: ELabel): void;
+    unbind_label_text(_label: ELabel): void;
     /** 为UI进度条节点当前进度解绑属性 */
-    static unbind_progressbar_current(_progress_bar: EProgressbar): void;
+    unbind_progressbar_current(_progress_bar: EProgressbar): void;
     /** UI进度条节点最大进度解绑属性 */
-    static unbind_progressbar_max(_progress_bar: EProgressbar): void;
+    unbind_progressbar_max(_progress_bar: EProgressbar): void;
     /** 发起进入关卡投票 */
-    static vote_for_switch_level(_level_key: LevelKey): void;
+    vote_for_switch_level(_level_key: LevelKey): void;
     /** 玩家胜利 */
-    static win(): void;
+    win(): void;
 }
 
 declare class RollComp {
     /** 获取滚动冷却时间 */
-    static get_roll_cooldown(): Fixed;
+    get_roll_cooldown(): Fixed;
     /** 获取滚动剩余冷却时间 */
-    static get_roll_left_cd(): Fixed;
+    get_roll_left_cd(): Fixed;
     /** 获取滚动剩余冷却时间 */
-    static get_roll_remaining_cooldown(): Fixed;
+    get_roll_remaining_cooldown(): Fixed;
     /** 设置滚动冷却时间 */
-    static set_roll_cooldown(_time: Fixed): void;
+    set_roll_cooldown(_time: Fixed): void;
     /** 设置滚动剩余冷却时间 */
-    static set_roll_left_cd(_remaining_time: Fixed): void;
+    set_roll_left_cd(_remaining_time: Fixed): void;
     /** 设置滚动剩余冷却时间 */
-    static set_roll_remaining_cooldown(_remaining_time: Fixed): void;
+    set_roll_remaining_cooldown(_remaining_time: Fixed): void;
 }
 
 declare class RushComp {
     /** 获取飞扑冷却时间 */
-    static get_rush_cooldown(): Fixed;
+    get_rush_cooldown(): Fixed;
     /** 获取飞扑剩余冷却时间 */
-    static get_rush_left_cd(): Fixed;
+    get_rush_left_cd(): Fixed;
     /** 获取飞扑剩余冷却时间 */
-    static get_rush_remaining_cooldown(): Fixed;
+    get_rush_remaining_cooldown(): Fixed;
     /** 设置飞扑冷却时间 */
-    static set_rush_cooldown(_time: Fixed): void;
+    set_rush_cooldown(_time: Fixed): void;
     /** 设置飞扑剩余冷却时间 */
-    static set_rush_left_cd(_time: Fixed): void;
+    set_rush_left_cd(_time: Fixed): void;
     /** 设置飞扑剩余冷却时间 */
-    static set_rush_remaining_cooldown(_time: Fixed): void;
+    set_rush_remaining_cooldown(_time: Fixed): void;
 }
 
 declare class SceneUI {
     /** 创建场景界面绑定到单位 */
-    static create_scene_ui_bind_unit(_layer_key: E3DLayerKey, _socket_name: Enums.ModelSocket, _offset_pos: Vector3, _duration: Fixed, _bind_event: boolean | undefined, _inherit_visible: boolean | undefined): E3DLayer;
+    create_scene_ui_bind_unit(_layer_key: E3DLayerKey, _socket_name: Enums.ModelSocket, _offset_pos: Vector3, _duration: Fixed, _bind_event: boolean | undefined, _inherit_visible: boolean | undefined): E3DLayer;
 }
 
 declare class TriggerSpace {
     /** 获取光源亮度 */
-    static get_virtual_light_brightness(): Fixed;
+    get_virtual_light_brightness(): Fixed;
     /** 设置光源亮度 */
-    static set_virtual_light_brightness(_brightness: Fixed): void;
+    set_virtual_light_brightness(_brightness: Fixed): void;
 }
 
 declare class TriggerSystem {
     /** 判断计时器是否存在 */
-    static has_timer(_timer: Timer): boolean;
+    has_timer(_timer: Timer): boolean;
 }
 
 declare class Unit {
     /** 添加向技能槽位添加UGC技能能 */
-    static add_ability_to_slot(_ability_index: AbilitySlot, _ability_id: AbilityKey, _kv_args: any, _kv_types: any): Ability;
+    add_ability_to_slot(_ability_index: AbilitySlot, _ability_id: AbilityKey, _kv_args: any, _kv_types: any): Ability;
     /** 添加圆周运动 */
-    static add_angular_motor(_vel: Vector3, _time: Fixed, _is_local: boolean | undefined): number;
+    add_angular_motor(_vel: Vector3, _time: Fixed, _is_local: boolean | undefined): number;
     /** 添加子单位 */
-    static add_child(_unit: Unit): void;
+    add_child(_unit: Unit): void;
     /** 添加圆周运动 */
-    static add_circle_motor(_vel: Vector3, _time: Fixed, _is_local: boolean | undefined): number;
+    add_circle_motor(_vel: Vector3, _time: Fixed, _is_local: boolean | undefined): number;
     /** 添加直线运动 */
-    static add_linear_motor(_vel: Vector3, _time: Fixed, _is_local: boolean | undefined): number;
+    add_linear_motor(_vel: Vector3, _time: Fixed, _is_local: boolean | undefined): number;
     /** 添加环绕运动 */
-    static add_surround_motor(_follow_target: Unit, _ang_vel: Vector3, _time: Fixed, _follow_rotate: boolean | undefined): void;
+    add_surround_motor(_follow_target: Unit, _ang_vel: Vector3, _time: Fixed, _follow_rotate: boolean | undefined): void;
     /** 添加向技能槽位添加UGC技能能 */
-    static add_ugc_skill_to_slot(_ability_index: AbilitySlot, _ability_id: AbilityKey, _kv_args: any, _kv_types: any): Ability;
+    add_ugc_skill_to_slot(_ability_index: AbilitySlot, _ability_id: AbilityKey, _kv_args: any, _kv_types: any): Ability;
     /** 控制AI执行警戒命令 */
-    static ai_command_alert(_tagert_pos: Vector3, _target_dir: Vector3, _dalay_time: Fixed, _reject_time: Fixed, _move_mode: Enums.MoveMode): void;
+    ai_command_alert(_tagert_pos: Vector3, _target_dir: Vector3, _dalay_time: Fixed, _reject_time: Fixed, _move_mode: Enums.MoveMode): void;
     /** 控制AI执行跟随命令 */
-    static ai_command_follow(_target_unit: Character, _follow_dis: Fixed, _tolerate_dis: Fixed, _reject_time: Fixed, _move_mode: Enums.MoveMode): void;
+    ai_command_follow(_target_unit: Character, _follow_dis: Fixed, _tolerate_dis: Fixed, _reject_time: Fixed, _move_mode: Enums.MoveMode): void;
     /** 控制AI执行模仿命令 */
-    static ai_command_imitate(_target_unit: Character, _delay: Fixed, _disable_actions: Enums.AIBasicCommand[]): void;
+    ai_command_imitate(_target_unit: Character, _delay: Fixed, _disable_actions: Enums.AIBasicCommand[]): void;
     /** 控制AI跳跃 */
-    static ai_command_jump(): void;
+    ai_command_jump(): void;
     /** 控制AI举起/扔下/投掷 */
-    static ai_command_lift(): void;
+    ai_command_lift(): void;
     /** 控制AI执行巡逻命令 */
-    static ai_command_nav(_waypoint: Vector3, _reject_time: Fixed, _round_mode: Enums.PatrolType, _move_mode: Enums.MoveMode): void;
+    ai_command_nav(_waypoint: Vector3, _reject_time: Fixed, _round_mode: Enums.PatrolType, _move_mode: Enums.MoveMode): void;
     /** 控制AI拾取物品 */
-    static ai_command_pick_up_equipment(_target_equipment: Equipment, _move_mode: Enums.MoveMode, _reject_time: Fixed): void;
+    ai_command_pick_up_equipment(_target_equipment: Equipment, _move_mode: Enums.MoveMode, _reject_time: Fixed): void;
     /** 控制AI滚动 */
-    static ai_command_roll(): void;
+    ai_command_roll(): void;
     /** 控制AI前扑 */
-    static ai_command_rush(): void;
+    ai_command_rush(): void;
     /** 控制AI单位移动 */
-    static ai_command_start_move(_direction: Vector3, _t: Fixed): void;
+    ai_command_start_move(_direction: Vector3, _t: Fixed): void;
     /** 控制AI执行高优先级寻路命令 */
-    static ai_command_start_move_high_priority(_target_position: Vector3, _duration: Fixed, _threshold: Fixed): void;
+    ai_command_start_move_high_priority(_target_position: Vector3, _duration: Fixed, _threshold: Fixed): void;
     /** 控制AI单位停止移动 */
-    static ai_command_stop_move(_duration: Fixed): void;
+    ai_command_stop_move(_duration: Fixed): void;
     /** 施加力 */
-    static apply_force(_force: Vector3): void;
+    apply_force(_force: Vector3): void;
     /** 施加冲击力 */
-    static apply_impact_force(_force: Vector3, _max_speed: Fixed, _force_lost_control: boolean | undefined, _lost_ctrl_time: Fixed): void;
+    apply_impact_force(_force: Vector3, _max_speed: Fixed, _force_lost_control: boolean | undefined, _lost_ctrl_time: Fixed): void;
     /** 打断技能蓄力 */
-    static break_ability_accumulate(): void;
+    break_ability_accumulate(): void;
     /** 打断技能施法 */
-    static break_ability_cast(): void;
+    break_ability_cast(): void;
     /** 打断技能蓄力 */
-    static break_accumulate_skill(): void;
+    break_accumulate_skill(): void;
     /** 打断技能施法 */
-    static break_cast_skill(): void;
+    break_cast_skill(): void;
     /** 控制角色对目标方向释放指定槽位技能 */
-    static cast_ability_by_ability_slot_and_direction(_direction: Vector3, _ability_slot: AbilitySlot, _duration: Fixed): void;
+    cast_ability_by_ability_slot_and_direction(_direction: Vector3, _ability_slot: AbilitySlot, _duration: Fixed): void;
     /** 控制角色对目标坐标释放指定槽位技能 */
-    static cast_ability_by_ability_slot_and_position(_position: Vector3, _ability_slot: AbilitySlot, _duration: Fixed): void;
+    cast_ability_by_ability_slot_and_position(_position: Vector3, _ability_slot: AbilitySlot, _duration: Fixed): void;
     /** 控制角色对目标单位释放指定槽位技能 */
-    static cast_ability_by_ability_slot_and_target(_target: LifeEntity, _ability_slot: AbilitySlot, _duration: Fixed): void;
+    cast_ability_by_ability_slot_and_target(_target: LifeEntity, _ability_slot: AbilitySlot, _duration: Fixed): void;
     /** 控制角色对指定方向执行释放指定预设技能 */
-    static cast_ability_by_direction(_ability_key: AbilityKey, _duration: Fixed, _direction: Vector3, _ability_slot: number | undefined): void;
+    cast_ability_by_direction(_ability_key: AbilityKey, _duration: Fixed, _direction: Vector3, _ability_slot: number | undefined): void;
     /** 控制角色对指定坐标执行释放预设技能 */
-    static cast_ability_by_position(_ability_key: AbilityKey, _duration: Fixed, _position: Vector3, _ability_slot: number | undefined): void;
+    cast_ability_by_position(_ability_key: AbilityKey, _duration: Fixed, _position: Vector3, _ability_slot: number | undefined): void;
     /** 控制角色对指定目标执行释放指定预设技能 */
-    static cast_ability_by_target(_ability_key: AbilityKey, _duration: Fixed, _target: LifeEntity, _ability_slot: number | undefined): void;
+    cast_ability_by_target(_ability_key: AbilityKey, _duration: Fixed, _target: LifeEntity, _ability_slot: number | undefined): void;
     /** 改变组件颜色 */
-    static change_comp_color(_paint_area: PaintArea, _color: Color): void;
+    change_comp_color(_paint_area: PaintArea, _color: Color): void;
     /** 修改所属玩家 */
-    static change_owner(_role: Role): void;
+    change_owner(_role: Role): void;
     /** 清除单位物品格选中状态 */
-    static clear_selected_equipment_slot(): void;
+    clear_selected_equipment_slot(): void;
     /** 停止环绕运动 */
-    static del_surround_motor(): void;
+    del_surround_motor(): void;
     /** 销毁技能 */
-    static destroy_ability(_ability: Ability): boolean;
+    destroy_ability(_ability: Ability): boolean;
     /** 销毁技能 */
-    static destroy_skill(_ability: Ability): boolean;
+    destroy_skill(_ability: Ability): boolean;
     /** 关闭重力影响 */
-    static disable_gravity(): void;
+    disable_gravity(): void;
     /** 禁用单位互动 */
-    static disable_interact(): void;
+    disable_interact(): void;
     /** 禁用运动器 */
-    static disable_motor(_index: number): void;
+    disable_motor(_index: number): void;
     /** 开启重力影响 */
-    static enable_gravity(): void;
+    enable_gravity(): void;
     /** 激活单位互动 */
-    static enable_interact(): void;
+    enable_interact(): void;
     /** 激活运动器 */
-    static enable_motor(_index: number): void;
+    enable_motor(_index: number): void;
     /** 控制角色对目标方向释放指定槽位技能 */
-    static execute_ability_by_ability_slot_index_and_dir(_direction: Vector3, _ability_slot: AbilitySlot, _duration: Fixed): void;
+    execute_ability_by_ability_slot_index_and_dir(_direction: Vector3, _ability_slot: AbilitySlot, _duration: Fixed): void;
     /** 控制角色对目标坐标释放指定槽位技能 */
-    static execute_ability_by_ability_slot_index_and_pos(_position: Vector3, _ability_slot: AbilitySlot, _duration: Fixed): void;
+    execute_ability_by_ability_slot_index_and_pos(_position: Vector3, _ability_slot: AbilitySlot, _duration: Fixed): void;
     /** 控制角色对目标单位释放指定槽位技能 */
-    static execute_ability_by_ability_slot_index_and_target(_target: LifeEntity, _ability_slot: AbilitySlot, _duration: Fixed): void;
+    execute_ability_by_ability_slot_index_and_target(_target: LifeEntity, _ability_slot: AbilitySlot, _duration: Fixed): void;
     /** 控制角色对指定方向执行释放指定预设技能 */
-    static execute_ability_by_dir(_ability_key: AbilityKey, _duration: Fixed, _direction: Vector3, _ability_slot: number | undefined): void;
+    execute_ability_by_dir(_ability_key: AbilityKey, _duration: Fixed, _direction: Vector3, _ability_slot: number | undefined): void;
     /** 控制角色对指定坐标执行释放预设技能 */
-    static execute_ability_by_pos(_ability_key: AbilityKey, _duration: Fixed, _position: Vector3, _ability_slot: number | undefined): void;
+    execute_ability_by_pos(_ability_key: AbilityKey, _duration: Fixed, _position: Vector3, _ability_slot: number | undefined): void;
     /** 控制角色对指定目标执行释放指定预设技能 */
-    static execute_ability_by_target(_ability_key: AbilityKey, _duration: Fixed, _target: LifeEntity, _ability_slot: number | undefined): void;
+    execute_ability_by_target(_ability_key: AbilityKey, _duration: Fixed, _target: LifeEntity, _ability_slot: number | undefined): void;
     /** 获取单位所有技能 */
-    static get_abilities(): Ability[];
+    get_abilities(): Ability[];
     /** 获取对应槽位技能 */
-    static get_ability_by_slot(_ability_slot: AbilitySlot): Ability;
+    get_ability_by_slot(_ability_slot: AbilitySlot): Ability;
     /** 获取对应槽位技能 */
-    static get_ability_in_slot(_ability_slot: AbilitySlot): Ability;
+    get_ability_in_slot(_ability_slot: AbilitySlot): Ability;
     /** 获取单位角速度 */
-    static get_angular_velocity(): Vector3;
+    get_angular_velocity(): Vector3;
     /** 获取单位所属阵营 */
-    static get_camp(): Camp;
+    get_camp(): Camp;
     /** 获取单位所属阵营id */
-    static get_camp_id(): CampID;
+    get_camp_id(): CampID;
     /** 根据单位编号获取子组件 */
-    static get_child_by_name(_name: string): Unit;
+    get_child_by_name(_name: string): Unit;
     /** 获得所有子触发区域单位 */
-    static get_child_customtriggerspaces(): CustomTriggerSpace[];
+    get_child_customtriggerspaces(): CustomTriggerSpace[];
     /** 获得所有子物理组件单位 */
-    static get_child_obstacles(): Obstacle[];
+    get_child_obstacles(): Obstacle[];
     /** 获得所有子单位 */
-    static get_children(): Unit[];
+    get_children(): Unit[];
     /** 获得所有子触发区域单位 */
-    static get_children_customtriggerspace(): CustomTriggerSpace[];
+    get_children_customtriggerspace(): CustomTriggerSpace[];
     /** 获得所有子物理组件单位 */
-    static get_children_obstacle(): Obstacle[];
+    get_children_obstacle(): Obstacle[];
     /** 获取触发区域内的随机坐标 */
-    static get_customtriggerspaces_random_point(): Vector3;
+    get_customtriggerspaces_random_point(): Vector3;
     /** 获取身上的物品 */
-    static get_equipment_by_slot(_slot_type: Enums.EquipmentSlotType, _slot_index: number): Equipment;
+    get_equipment_by_slot(_slot_type: Enums.EquipmentSlotType, _slot_index: number): Equipment;
     /** 获取角色/生物持有的物品预设列表 */
-    static get_equipment_list(_equipment_key: EquipmentKey, _exclude_equipped: boolean | undefined, _exclude_bag: boolean | undefined): Equipment[];
+    get_equipment_list(_equipment_key: EquipmentKey, _exclude_equipped: boolean | undefined, _exclude_bag: boolean | undefined): Equipment[];
     /** 获取持有的物品列表 */
-    static get_equipment_list_by_slot(_slot_type: Enums.EquipmentSlotType): Equipment[];
+    get_equipment_list_by_slot(_slot_type: Enums.EquipmentSlotType): Equipment[];
     /** 获取最大可持有的物品数量 */
-    static get_equipment_max_num_by_slot(_slot_type: Enums.EquipmentSlotType): number;
+    get_equipment_max_num_by_slot(_slot_type: Enums.EquipmentSlotType): number;
     /** 获取单位编号 */
-    static get_key(): UnitKey;
+    get_key(): UnitKey;
     /** 获取举起冷却时间 */
-    static get_lift_cd(): Fixed;
+    get_lift_cd(): Fixed;
     /** 获取举起剩余冷却时间 */
-    static get_lift_left_cd(): Fixed;
+    get_lift_left_cd(): Fixed;
     /** 获取单位线速度 */
-    static get_linear_velocity(): Vector3;
+    get_linear_velocity(): Vector3;
     /** 获取单位本地坐标系下的方向 */
-    static get_local_dir(_direction_type: Enums.DirectionType): Vector3;
+    get_local_dir(_direction_type: Enums.DirectionType): Vector3;
     /** 获取单位本地坐标系下的方向 */
-    static get_local_direction(_direction_type: Enums.DirectionType): Vector3;
+    get_local_direction(_direction_type: Enums.DirectionType): Vector3;
     /** 获取单位局部偏移位置 */
-    static get_local_offset_position(_offset: Vector3): Vector3;
+    get_local_offset_position(_offset: Vector3): Vector3;
     /** 获取单位本地坐标系下的旋转角 */
-    static get_local_quaternion(_direction_type: Enums.DirectionType): Quaternion;
+    get_local_quaternion(_direction_type: Enums.DirectionType): Quaternion;
     /** 获取单位名称 */
-    static get_name(): string;
+    get_name(): string;
     /** 获得单位旋转 */
-    static get_orientation(): Quaternion;
+    get_orientation(): Quaternion;
     /** 获取父单位 */
-    static get_parent(): Unit;
+    get_parent(): Unit;
     /** 获取单位坐标 */
-    static get_position(): Vector3;
+    get_position(): Vector3;
     /** 获取受力类型 */
-    static get_rigid_body_type(): Enums.RigidBodyType;
+    get_rigid_body_type(): Enums.RigidBodyType;
     /** 获取单位所属玩家 */
-    static get_role(): Role;
+    get_role(): Role;
     /** 获取单位所属玩家ID */
-    static get_role_id(): RoleID;
+    get_role_id(): RoleID;
     /** 获取滚动剩余冷却时间 */
-    static get_roll_left_cd(): Fixed;
+    get_roll_left_cd(): Fixed;
     /** 获取飞扑剩余冷却时间 */
-    static get_rush_left_cd(): Fixed;
+    get_rush_left_cd(): Fixed;
     /** 获得单位缩放 */
-    static get_scale(): Vector3;
+    get_scale(): Vector3;
     /** 获取当前选中的物品 */
-    static get_selected_equipment(): Equipment;
+    get_selected_equipment(): Equipment;
     /** 获取单位所有技能 */
-    static get_skills(): Ability[];
+    get_skills(): Ability[];
     /** 获取对应槽位技能 */
-    static get_ugc_skill(_ability_slot: AbilitySlot): Ability;
+    get_ugc_skill(_ability_slot: AbilitySlot): Ability;
     /** 获取单位类型 */
-    static get_unit_type(): Enums.UnitType;
+    get_unit_type(): Enums.UnitType;
     /** 关闭气泡信息 */
-    static hide_bubble_msg(): void;
+    hide_bubble_msg(): void;
     /** 打断技能施法 */
-    static interrupt_ability(): void;
+    interrupt_ability(): void;
     /** 是否为角色 */
-    static is_character(): boolean;
+    is_character(): boolean;
     /** 是否为生物 */
-    static is_creature(): boolean;
+    is_creature(): boolean;
     /** 组件是否为受力物体 */
-    static is_dynamic(): boolean;
+    is_dynamic(): boolean;
     /** 是受力物体 */
-    static is_dynamic_body(): boolean;
+    is_dynamic_body(): boolean;
     /** 单位是否在触发区域内 */
-    static is_in_custom_trigger_space(_custom_trigger_space: CustomTriggerSpace, _consider_mask: boolean | undefined): boolean;
+    is_in_custom_trigger_space(_custom_trigger_space: CustomTriggerSpace, _consider_mask: boolean | undefined): boolean;
     /** 单位是否在触发区域内 */
-    static is_in_customtriggerspace(_custom_trigger_space: CustomTriggerSpace, _consider_mask: boolean | undefined): boolean;
+    is_in_customtriggerspace(_custom_trigger_space: CustomTriggerSpace, _consider_mask: boolean | undefined): boolean;
     /** 是动力学物体 */
-    static is_kinematic_body(): boolean;
+    is_kinematic_body(): boolean;
     /** 单位模型是否可见 */
-    static is_model_visible(): boolean;
+    is_model_visible(): boolean;
     /** 单位物理是否生效 */
-    static is_physic_active(): boolean;
+    is_physic_active(): boolean;
     /** 单位物理是否生效 */
-    static is_physic_enable(): boolean;
+    is_physic_enable(): boolean;
     /** 单位物理是否生效 */
-    static is_physics_active(): boolean;
+    is_physics_active(): boolean;
     /** 是静态物体 */
-    static is_static_body(): boolean;
+    is_static_body(): boolean;
     /** 判断单位是否满足作为技能释放目标的条件 */
-    static is_valid_ability_target(_ability: Ability): boolean;
+    is_valid_ability_target(_ability: Ability): boolean;
     /** 单位开始播放3d音效 */
-    static play_3d_sound(_sound_key: SoundKey, _duration: Fixed, _volume: Fixed): SoundID;
+    play_3d_sound(_sound_key: SoundKey, _duration: Fixed, _volume: Fixed): SoundID;
     /** 单位发送表情 */
-    static play_emoji(_emoji_key: EmojiKey): void;
+    play_emoji(_emoji_key: EmojiKey): void;
     /** 发送气泡表情 */
-    static play_emoji_with_offset(_emoji_key: EmojiKey, _show_time: Fixed, _offset: Vector3): void;
+    play_emoji_with_offset(_emoji_key: EmojiKey, _show_time: Fixed, _offset: Vector3): void;
     /** 单位开始播放声音 */
-    static play_sound_with_dis_and_attenuation(_event_id: SoundKey, _vis_dis: Fixed, _sound_attenuation_curve: string): SoundID;
+    play_sound_with_dis_and_attenuation(_event_id: SoundKey, _vis_dis: Fixed, _sound_attenuation_curve: string): SoundID;
     /** 移除槽位上的技能 */
-    static remove_ability(_ability_slot: AbilitySlot): boolean;
+    remove_ability(_ability_slot: AbilitySlot): boolean;
     /** 根据技能编号移除技能 */
-    static remove_ability_by_ability_key(_ability_key: AbilityKey): boolean;
+    remove_ability_by_ability_key(_ability_key: AbilityKey): boolean;
     /** 根据技能编号移除技能 */
-    static remove_ability_by_key(_ability_key: AbilityKey): boolean;
+    remove_ability_by_key(_ability_key: AbilityKey): boolean;
     /** 移除槽位上的技能 */
-    static remove_ability_in_slot(_ability_slot: AbilitySlot): boolean;
+    remove_ability_in_slot(_ability_slot: AbilitySlot): boolean;
     /** 从父节点移除 */
-    static remove_from_parent(): void;
+    remove_from_parent(): void;
     /** 根据技能编号移除技能 */
-    static remove_skill_by_skill_key(_ability_key: AbilityKey): boolean;
+    remove_skill_by_skill_key(_ability_key: AbilityKey): boolean;
     /** 停止环绕运动 */
-    static remove_surround_motor(): void;
+    remove_surround_motor(): void;
     /** 移除槽位上的技能 */
-    static remove_ugc_skill_in_slot(_ability_slot: AbilitySlot): boolean;
+    remove_ugc_skill_in_slot(_ability_slot: AbilitySlot): boolean;
     /** 重置指定槽位技能CD */
-    static reset_ability_cd(_ability_index: AbilitySlot): void;
+    reset_ability_cd(_ability_index: AbilitySlot): void;
     /** 重置指定槽位技能CD */
-    static reset_skill_cd(_ability_index: AbilitySlot): void;
+    reset_skill_cd(_ability_index: AbilitySlot): void;
     /** 替换技能槽位(UGC槽位) */
-    static set_ability_to_slot(_ability: Ability, _ability_index: AbilitySlot): Ability;
+    set_ability_to_slot(_ability: Ability, _ability_index: AbilitySlot): Ability;
     /** 设置加速运动初速度并重置 */
-    static set_acc_motor_init_velocity(_index: number, _init_vel: Vector3): void;
+    set_acc_motor_init_velocity(_index: number, _init_vel: Vector3): void;
     /** 改变单位角速度 */
-    static set_angular_velocity(_vel: Vector3): void;
+    set_angular_velocity(_vel: Vector3): void;
     /** 设置举起冷却时间 */
-    static set_lift_cd(_cd_time: Fixed): void;
+    set_lift_cd(_cd_time: Fixed): void;
     /** 设置举起剩余冷却时间 */
-    static set_lift_left_cd(_time: Fixed): void;
+    set_lift_left_cd(_time: Fixed): void;
     /** 设置直线运动速度 */
-    static set_linear_motor_velocity(_index: number, _vel: Vector3, _is_local: boolean | undefined): void;
+    set_linear_motor_velocity(_index: number, _vel: Vector3, _is_local: boolean | undefined): void;
     /** 改变单位线速度 */
-    static set_linear_velocity(_vel: Vector3): void;
+    set_linear_velocity(_vel: Vector3): void;
     /** 开关镜面反射 */
-    static set_mirror_reflect_enabled(_enable: boolean): void;
+    set_mirror_reflect_enabled(_enable: boolean): void;
     /** 设置单位物理是否生效 */
-    static set_model_physic_visible(_is_active: boolean): void;
+    set_model_physic_visible(_is_active: boolean): void;
     /** 设置单位模型是否可见 */
-    static set_model_visible(_v: boolean): void;
+    set_model_visible(_v: boolean): void;
     /** 设置单位旋转 */
-    static set_orientation(_rot: Quaternion): void;
+    set_orientation(_rot: Quaternion): void;
     /** 改变组件颜色 */
-    static set_paint_area_color(_paint_area: PaintArea, _color: Color): void;
+    set_paint_area_color(_paint_area: PaintArea, _color: Color): void;
     /** 改变组件颜色 */
-    static set_paintarea_color(_paint_area: PaintArea, _color: Color): void;
+    set_paintarea_color(_paint_area: PaintArea, _color: Color): void;
     /** 设置单位物理是否生效 */
-    static set_physic_enable(_is_active: boolean): void;
+    set_physic_enable(_is_active: boolean): void;
     /** 设置单位物理是否生效 */
-    static set_physics_active(_is_active: boolean): void;
+    set_physics_active(_is_active: boolean): void;
     /** 重置单位坐标 */
-    static set_position(_pos: Vector3): void;
+    set_position(_pos: Vector3): void;
     /** 设置滚动剩余冷却时间 */
-    static set_roll_left_cd(_remaining_time: Fixed): void;
+    set_roll_left_cd(_remaining_time: Fixed): void;
     /** 设置飞扑冷却时间 */
-    static set_rush_cd(_time: Fixed): void;
+    set_rush_cd(_time: Fixed): void;
     /** 设置飞扑剩余冷却时间 */
-    static set_rush_left_cd(_time: Fixed): void;
+    set_rush_left_cd(_time: Fixed): void;
     /** 设置单位选中物品格 */
-    static set_selected_equipment_slot(_slot_type: Enums.EquipmentSlotType, _slot_index: number): void;
+    set_selected_equipment_slot(_slot_type: Enums.EquipmentSlotType, _slot_index: number): void;
     /** 替换技能槽位(UGC槽位) */
-    static set_skill_to_slot(_ability: Ability, _ability_index: AbilitySlot): Ability;
+    set_skill_to_slot(_ability: Ability, _ability_index: AbilitySlot): Ability;
     /** 设置单位世界空间下的缩放 */
-    static set_world_scale(_scale: Vector3): void;
+    set_world_scale(_scale: Vector3): void;
     /** 发送气泡信息 */
-    static show_bubble_msg(_show_msg: string, _show_time: Fixed, _max_dis: Fixed, _offset: Vector3): void;
+    show_bubble_msg(_show_msg: string, _show_time: Fixed, _max_dis: Fixed, _offset: Vector3): void;
     /** 激活AI */
-    static start_ai(): void;
+    start_ai(): void;
     /** 暂停AI */
-    static stop_ai(): void;
+    stop_ai(): void;
     /** 单位停止播放声音 */
-    static stop_sound(_lres_id: SoundID): void;
+    stop_sound(_lres_id: SoundID): void;
     /** 使载具往某个方向移动一段时间 */
-    static vehicle_start_move(_direction: Vector3, _duration: Fixed): void;
+    vehicle_start_move(_direction: Vector3, _duration: Fixed): void;
     /** 使载具停止移动 */
-    static vehicle_stop_move(): void;
+    vehicle_stop_move(): void;
 }
 
 declare class UnitInteractVolumeComp {
     /** 获取单位互动按钮ID */
-    static get_interact_id(_interact_index: number, _interact_btn_type: Enums.InteractBtnType): InteractBtnID;
+    get_interact_id(_interact_index: number, _interact_btn_type: Enums.InteractBtnType): InteractBtnID;
     /** 设置单位互动按钮图标 */
-    static set_interact_btn_icon(_interact_id: InteractBtnID, _icon: ImageKey): void;
+    set_interact_btn_icon(_interact_id: InteractBtnID, _icon: ImageKey): void;
     /** 设置单位互动按钮文本 */
-    static set_interact_btn_name(_interact_id: InteractBtnID, _text: string): void;
+    set_interact_btn_name(_interact_id: InteractBtnID, _text: string): void;
     /** 设置单位互动按钮图标 */
-    static set_interact_button_icon(_interact_id: InteractBtnID, _icon: ImageKey): void;
+    set_interact_button_icon(_interact_id: InteractBtnID, _icon: ImageKey): void;
     /** 设置单位互动按钮文本 */
-    static set_interact_button_text(_interact_id: InteractBtnID, _text: string): void;
+    set_interact_button_text(_interact_id: InteractBtnID, _text: string): void;
     /** 设置单位互动按钮文本 */
-    static set_interact_button_text_by_index(_interact_index: number, _text: string): void;
+    set_interact_button_text_by_index(_interact_index: number, _text: string): void;
     /** 设置单位互动是否启用 */
-    static set_interact_enable(_enable: boolean): void;
+    set_interact_enable(_enable: boolean): void;
     /** 设置单位互动是否启用(索引) */
-    static set_interact_enable_by_index(_interact_index: number, _enable: boolean): void;
+    set_interact_enable_by_index(_interact_index: number, _enable: boolean): void;
     /** 设置单位互动是否启用 */
-    static set_interact_enabled(_enable: boolean): void;
+    set_interact_enabled(_enable: boolean): void;
     /** 设置单位互动是否启用(索引) */
-    static set_interact_enabled_by_index(_interact_index: number, _enable: boolean): void;
+    set_interact_enabled_by_index(_interact_index: number, _enable: boolean): void;
 }
 
 declare class VehicleComp {
     /** 载具复位 */
-    static reset(): void;
+    reset(): void;
     /** 使载具往某个方向移动一段时间 */
-    static start_move_by_direction(_direction: Vector3, _duration: Fixed): void;
+    start_move_by_direction(_direction: Vector3, _duration: Fixed): void;
     /** 使载具停止移动 */
-    static stop_move(): void;
+    stop_move(): void;
 }
 
 declare class VirtualEquipment {
     /** 增加/减少物品当前堆叠数 */
-    static add_equipment_current_stack_num(_num: number): void;
+    add_equipment_current_stack_num(_num: number): void;
     /** 增加/减少物品最大堆叠数 */
-    static add_equipment_max_stack_num(_num: number): void;
+    add_equipment_max_stack_num(_num: number): void;
     /** 获取物品能否丢弃 */
-    static can_drop(): boolean;
+    can_drop(): boolean;
     /** 增加/减少物品当前堆叠数 */
-    static change_current_stack_size(_num: number): void;
+    change_current_stack_size(_num: number): void;
     /** 增加/减少物品最大堆叠数 */
-    static change_max_stack_size(_num: number): void;
+    change_max_stack_size(_num: number): void;
     /** 删除物品 */
-    static destroy_equipment(): void;
+    destroy_equipment(): void;
     /** 获取物品当前堆叠层数 */
-    static get_current_stack_num(): number;
+    get_current_stack_num(): number;
     /** 获取物品描述 */
-    static get_desc(): string;
+    get_desc(): string;
     /** 获取物品的抵押价格 */
-    static get_economic_value(_res_type: string): number;
+    get_economic_value(_res_type: string): number;
     /** 获取物品是否自动拾取 */
-    static get_equipment_auto_pick(): boolean;
+    get_equipment_auto_pick(): boolean;
     /** 获取物品是否自动使用 */
-    static get_equipment_auto_use(): boolean;
+    get_equipment_auto_use(): boolean;
     /** 获取物品能否丢弃 */
-    static get_equipment_can_drop(): boolean;
+    get_equipment_can_drop(): boolean;
     /** 获取物品当前堆叠层数 */
-    static get_equipment_current_stack_num(): number;
+    get_equipment_current_stack_num(): number;
     /** 获取物品描述 */
-    static get_equipment_desc(): string;
+    get_equipment_desc(): string;
     /** 获取物品的物品编号 */
-    static get_equipment_key_prefab(): EquipmentKey;
+    get_equipment_key_prefab(): EquipmentKey;
     /** 获取物品最大堆叠层数 */
-    static get_equipment_max_stack_num(): number;
+    get_equipment_max_stack_num(): number;
     /** 获取物品名称 */
-    static get_equipment_name(): string;
+    get_equipment_name(): string;
     /** 获取持有物品的角色 */
-    static get_equipment_owner_character(): Character;
+    get_equipment_owner_character(): Character;
     /** 获取持有物品的生物 */
-    static get_equipment_owner_creature(): Creature;
+    get_equipment_owner_creature(): Creature;
     /** 获取物品所在槽位 */
-    static get_equipment_slot(): EquipmentSlot;
+    get_equipment_slot(): EquipmentSlot;
     /** 获取物品所在槽位 */
-    static get_equipment_slot_index(): EquipmentSlot;
+    get_equipment_slot_index(): EquipmentSlot;
     /** 获取物品所在槽位类型 */
-    static get_equipment_slot_type(): Enums.EquipmentSlotType;
+    get_equipment_slot_type(): Enums.EquipmentSlotType;
     /** 获取物品的物品类型 */
-    static get_equipment_type(): Enums.EquipmentType;
+    get_equipment_type(): Enums.EquipmentType;
     /** 获取物品的物品编号 */
-    static get_key(): EquipmentKey;
+    get_key(): EquipmentKey;
     /** 获取物品最大堆叠层数 */
-    static get_max_stack_num(): number;
+    get_max_stack_num(): number;
     /** 获取物品名称 */
-    static get_name(): string;
+    get_name(): string;
     /** 获取持有物品的角色 */
-    static get_owner_character(): Character;
+    get_owner_character(): Character;
     /** 获取持有物品的生物 */
-    static get_owner_creature(): Creature;
+    get_owner_creature(): Creature;
     /** 获取物品位置 */
-    static get_position(): Vector3;
+    get_position(): Vector3;
     /** 获取物品所在槽位 */
-    static get_slot_index(): EquipmentSlot;
+    get_slot_index(): EquipmentSlot;
     /** 获取物品所在槽位类型 */
-    static get_slot_type(): Enums.EquipmentSlotType;
+    get_slot_type(): Enums.EquipmentSlotType;
     /** 物品是否被持有 */
-    static has_owner(): boolean;
+    has_owner(): boolean;
     /** 获取物品是否自动拾取 */
-    static is_auto_pick(): boolean;
+    is_auto_pick(): boolean;
     /** 获取物品是否自动拾取 */
-    static is_auto_picking(): boolean;
+    is_auto_picking(): boolean;
     /** 获取物品是否自动使用 */
-    static is_auto_use(): boolean;
+    is_auto_use(): boolean;
     /** 获取物品是否自动使用 */
-    static is_auto_using(): boolean;
+    is_auto_using(): boolean;
     /** 设置物品当前堆叠数 */
-    static set_current_stack_num(_num: number): void;
+    set_current_stack_num(_num: number): void;
     /** 设置物品的描述 */
-    static set_desc(_desc: string): void;
+    set_desc(_desc: string): void;
     /** 设置物品能否丢弃 */
-    static set_droppable(_droppable: boolean): void;
+    set_droppable(_droppable: boolean): void;
     /** 设置物品的抵押价格 */
-    static set_economic_value(_res_type: string, _price: number): void;
+    set_economic_value(_res_type: string, _price: number): void;
     /** 设置物品当前堆叠数 */
-    static set_equipment_current_stack_num(_num: number): void;
+    set_equipment_current_stack_num(_num: number): void;
     /** 设置物品的描述 */
-    static set_equipment_desc(_desc: string): void;
+    set_equipment_desc(_desc: string): void;
     /** 设置物品的图标 */
-    static set_equipment_icon(_icon_key: ImageKey): void;
+    set_equipment_icon(_icon_key: ImageKey): void;
     /** 设置物品最大堆叠数 */
-    static set_equipment_max_stack_num(_num: number): void;
+    set_equipment_max_stack_num(_num: number): void;
     /** 设置物品的名称 */
-    static set_equipment_name(_name: string): void;
+    set_equipment_name(_name: string): void;
     /** 设置物品的图标 */
-    static set_icon(_icon_key: ImageKey): void;
+    set_icon(_icon_key: ImageKey): void;
     /** 设置物品最大堆叠数 */
-    static set_max_stack_num(_num: number): void;
+    set_max_stack_num(_num: number): void;
     /** 设置物品的名称 */
-    static set_name(_name: string): void;
+    set_name(_name: string): void;
     /** 设置物品能否使用 */
-    static set_usable(_usable: boolean): void;
+    set_usable(_usable: boolean): void;
 }
